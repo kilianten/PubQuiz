@@ -9,7 +9,11 @@ public class Main {
         window.setResizable(false);
         window.setTitle("Pub Quiz");
 
-        window.setLocation(null);
+        GamePanel gamePanel = new GamePanel();
+        window.add(gamePanel);
+        window.pack();
+
+        window.setLocationRelativeTo(null);
         window.setVisible(true);
 
     }
