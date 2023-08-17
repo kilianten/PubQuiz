@@ -40,7 +40,7 @@ public class Player extends Entity implements PlayerImages {
     }
 
     public void setDefaultValues(){
-        speed = 2;
+        speed = 4;
         x = 10;
         y = 10;
         direction = "down";
