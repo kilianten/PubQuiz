@@ -3,6 +3,7 @@ package gameObjects.entity.player;
 
 import gameObjects.entity.Entity;
 import gameObjects.graphics.Animation;
+import graphics.ImageLoader;
 import input.KeyHandler;
 import game.Game;
 
@@ -26,23 +27,23 @@ public class Player extends Entity implements PlayerImages {
         this.game = game;
         this.key = key;
         setDefaultValues();
-        loadImages(game);
+        loadImages();
     }
 
-    public void loadImages(Game game){
-        walkingDownImages = game.loadImages(WALKING_DOWN_IMAGES);
-        walkingRightImages = game.loadImages(WALKING_RIGHT_IMAGES);
-        walkingLeftImages = game.loadImages(WALKING_LEFT_IMAGES);
-        walkingUpImages = game.loadImages(WALKING_UP_IMAGES);
-        defaultSprite = game.loadImage("/player/standing.png");
-        standingLeftSprite = game.loadImage("/player/standingLeft.png");
-        standingUpSprite = game.loadImage("/player/standingUp.png");
+    public void loadImages(){
+        walkingDownImages = ImageLoader.loadImages(WALKING_DOWN_IMAGES);
+        walkingRightImages = ImageLoader.loadImages(WALKING_RIGHT_IMAGES);
+        walkingLeftImages = ImageLoader.loadImages(WALKING_LEFT_IMAGES);
+        walkingUpImages = ImageLoader.loadImages(WALKING_UP_IMAGES);
+        defaultSprite = ImageLoader.loadImage("/player/standing.png");
+        standingLeftSprite = ImageLoader.loadImage("/player/standingLeft.png");
+        standingUpSprite = ImageLoader.loadImage("/player/standingUp.png");
     }
 
     public void setDefaultValues(){
         speed = 4;
-        x = 10;
-        y = 10;
+        x = 100;
+        y = 1000;
         direction = "down";
         sprite = defaultSprite;
     }

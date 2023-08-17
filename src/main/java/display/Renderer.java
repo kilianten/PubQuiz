@@ -20,7 +20,7 @@ public class Renderer {
     }
 
     public void renderMap(Game game, Graphics2D graphics) {
-        String[][] map = game.getTileManager().getMap();
+        String[][] map = game.getGameMap().getMap();
         Camera camera = game.getCamera();
 
         int startX = Math.max(0, camera.getX() / Game.TILE_SIZE - Game.TILE_SIZE);
@@ -33,9 +33,9 @@ public class Renderer {
                 int drawPositionX = x * Game.TILE_SIZE - camera.getX();
                 int drawPositionY = y * Game.TILE_SIZE - camera.getY();
 
-                BufferedImage image = game.getTileManager().getTileSprite(x, y);
+                BufferedImage image = game.getGameMap().getTileSprite(x, y);
 
-                graphics.drawImage(game.getTileManager().getTileSprite(x, y),
+                graphics.drawImage(game.getGameMap().getTileSprite(x, y),
                         drawPositionX,
                         drawPositionY,
                         image.getWidth() * Game.SCALE,

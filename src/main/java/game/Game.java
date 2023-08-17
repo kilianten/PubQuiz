@@ -4,7 +4,7 @@ import display.Camera;
 import display.Renderer;
 import gameObjects.entity.player.Player;
 import input.KeyHandler;
-import tile.TileManager;
+import map.GameMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -25,7 +25,7 @@ public class Game extends JPanel implements Runnable {
 
     final private int FPS = 60;
 
-    private TileManager tileManager = new TileManager(this);
+    private GameMap gameMap = new GameMap(this);
     private KeyHandler key = new KeyHandler();
     private Thread gameThread;
     private Player player = new Player(this, key);
@@ -97,37 +97,7 @@ public class Game extends JPanel implements Runnable {
         return TILE_SIZE;
     }
 
-    public int getTilePosition(int point) {
-        return TILE_SIZE * point;
-    }
 
-    public BufferedImage[] loadImages(String[] imagePaths){
-        BufferedImage[] images = new BufferedImage[imagePaths.length];
-
-        for(int i = 0; i < imagePaths.length; i++){
-            String path = imagePaths[i];
-
-            images[i] = loadImage(path);
-        }
-
-        return images;
-    }
-
-    public BufferedImage loadImage(String imagePath){
-        BufferedImage image = null;
-
-        try {
-            if(getClass().getResourceAsStream(imagePath) == null){
-                System.out.println("Couldn't find resource at " + imagePath);
-            } else {
-                image = ImageIO.read(getClass().getResourceAsStream(imagePath));
-            }
-        } catch (IOException e) {
-            System.out.println("Couldn't load image at path " + imagePath);
-        }
-
-        return image;
-    }
 
     public int getScreenWidth() {
         return SCREEN_WIDTH;
@@ -141,8 +111,8 @@ public class Game extends JPanel implements Runnable {
         return camera;
     }
 
-    public TileManager getTileManager() {
-        return tileManager;
+    public GameMap getGameMap() {
+        return gameMap;
     }
 
 }
