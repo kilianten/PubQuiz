@@ -1,7 +1,12 @@
+package game;
+
+import gameObjects.entity.Player;
+import input.KeyHandler;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class GamePanel extends JPanel implements Runnable {
+public class Game extends JPanel implements Runnable {
 
     // Screen Settings
     final private int ORIGINAL_TILE_SIZE = 16;
@@ -16,12 +21,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     private KeyHandler key = new KeyHandler();
     private Thread gameThread;
+    private Player player = new Player(this, key);
 
     private int playerX = 10;
     private int playerY = 10;
     private int playerSpeed = 4;
 
-    public GamePanel() {
+    public Game() {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
@@ -35,18 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        if(key.upPressed){
-            playerY -= playerSpeed;
-        }
-        else if(key.downPressed){
-            playerY += playerSpeed;
-        }
-        else if(key.leftPressed){
-            playerX -= playerSpeed;
-        }
-        else if(key.rightPressed){
-            playerX += playerSpeed;
-        }
+        player.update();
     }
 
     public void paintComponent(Graphics g) {
@@ -54,8 +49,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setColor(Color.white);
-        g2.fillRect(playerX, playerY, TILE_SIZE, TILE_SIZE);
+        player.draw(this, g2);
         g2.dispose();
     }
 
@@ -91,4 +85,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    public int getTileSize() {
+        return TILE_SIZE;
+    }
 }
