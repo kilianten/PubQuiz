@@ -1,6 +1,6 @@
 package game;
 
-import gameObjects.entity.Player;
+import gameObjects.entity.player.Player;
 import input.KeyHandler;
 
 import javax.swing.*;
@@ -10,7 +10,7 @@ public class Game extends JPanel implements Runnable {
 
     // Screen Settings
     final private int ORIGINAL_TILE_SIZE = 16;
-    final private int SCALE = 3;
+    final private int SCALE = 4;
     final private int TILE_SIZE = ORIGINAL_TILE_SIZE * SCALE;
     final private int MAX_SCREEN_COL = 16;
     final private int MAX_SCREEN_ROW = 12;
@@ -23,13 +23,9 @@ public class Game extends JPanel implements Runnable {
     private Thread gameThread;
     private Player player = new Player(this, key);
 
-    private int playerX = 10;
-    private int playerY = 10;
-    private int playerSpeed = 4;
-
     public Game() {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.WHITE);
         this.setDoubleBuffered(true);
         this.addKeyListener(key);
         this.setFocusable(true);
@@ -78,7 +74,6 @@ public class Game extends JPanel implements Runnable {
             }
 
             if(timer >= 1000000000){
-                System.out.println("FPS: " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }

@@ -38,8 +38,9 @@ public class GameObject {
             try {
                 if(getClass().getResourceAsStream(path) == null){
                     System.out.println("Couldn't find resource at " + path);
+                } else {
+                    images[i] = ImageIO.read(getClass().getResourceAsStream(path));
                 }
-                images[i] = ImageIO.read(getClass().getResourceAsStream(path));
             } catch (IOException e) {
                 System.out.println("Couldn't load image at path " + path);
             }
@@ -54,8 +55,9 @@ public class GameObject {
         try {
             if(getClass().getResourceAsStream(imagePath) == null){
                 System.out.println("Couldn't find resource at " + imagePath);
+            } else {
+                image = ImageIO.read(getClass().getResourceAsStream(imagePath));
             }
-            image = ImageIO.read(getClass().getResourceAsStream(imagePath));
         } catch (IOException e) {
             System.out.println("Couldn't load image at path " + imagePath);
         }

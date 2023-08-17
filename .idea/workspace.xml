@@ -5,22 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/graphics/Animation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PubQuiz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PubQuiz.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/input/KeyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Entity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/PlayerImages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_down_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_down_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_left_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_left_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_right_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_right_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_up_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_up_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/playerWalking.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingRight01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player/playerWalking02.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingRight02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/template/baseman2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_down_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_down_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_left_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_left_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_right_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_right_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_up_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_up_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/playerWalking.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/playerWalking02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/template/baseman2.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +42,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -64,6 +76,9 @@
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="gameObjects.entity.player" />
     </key>
   </component>
   <component name="RunAnythingCache">
