@@ -26,17 +26,17 @@ public class Player extends Entity implements PlayerImages {
         this.game = game;
         this.key = key;
         setDefaultValues();
-        loadImages();
+        loadImages(game);
     }
 
-    public void loadImages(){
-        walkingDownImages = loadImages(WALKING_DOWN_IMAGES);
-        walkingRightImages = loadImages(WALKING_RIGHT_IMAGES);
-        walkingLeftImages = loadImages(WALKING_LEFT_IMAGES);
-        walkingUpImages = loadImages(WALKING_UP_IMAGES);
-        defaultSprite = loadImage("/player/standing.png");
-        standingLeftSprite = loadImage("/player/standingLeft.png");
-        standingUpSprite = loadImage("/player/standingUp.png");
+    public void loadImages(Game game){
+        walkingDownImages = game.loadImages(WALKING_DOWN_IMAGES);
+        walkingRightImages = game.loadImages(WALKING_RIGHT_IMAGES);
+        walkingLeftImages = game.loadImages(WALKING_LEFT_IMAGES);
+        walkingUpImages = game.loadImages(WALKING_UP_IMAGES);
+        defaultSprite = game.loadImage("/player/standing.png");
+        standingLeftSprite = game.loadImage("/player/standingLeft.png");
+        standingUpSprite = game.loadImage("/player/standingUp.png");
     }
 
     public void setDefaultValues(){

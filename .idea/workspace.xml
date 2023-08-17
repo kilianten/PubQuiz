@@ -5,33 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/PlayerImages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tile/Tile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tile/TileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_down_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_down_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_left_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_left_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_right_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_right_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_up_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/Walking sprites/boy_up_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/playerWalking.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingRight01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/playerWalking02.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingRight02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/template/baseman2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_down_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_down_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_left_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_left_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_right_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_right_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_up_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/Walking sprites/boy_up_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/playerWalking.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/playerWalking02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/baseman2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="openjdk-17" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MurderMystery" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MurderMystery/src/main/resources/sprites/tiles/brickWall.png" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15527344" />
     <property name="project.structure.side.proportion" value="0.2" />

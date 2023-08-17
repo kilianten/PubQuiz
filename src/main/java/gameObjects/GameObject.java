@@ -29,41 +29,6 @@ public class GameObject {
         this.animation = animation;
     }
 
-    public BufferedImage[] loadImages(String[] imagePaths){
-        BufferedImage[] images = new BufferedImage[imagePaths.length];
-
-        for(int i = 0; i < imagePaths.length; i++){
-            String path = imagePaths[i];
-
-            try {
-                if(getClass().getResourceAsStream(path) == null){
-                    System.out.println("Couldn't find resource at " + path);
-                } else {
-                    images[i] = ImageIO.read(getClass().getResourceAsStream(path));
-                }
-            } catch (IOException e) {
-                System.out.println("Couldn't load image at path " + path);
-            }
-        }
-
-        return images;
-    }
-
-    public BufferedImage loadImage(String imagePath){
-        BufferedImage image = null;
-
-        try {
-            if(getClass().getResourceAsStream(imagePath) == null){
-                System.out.println("Couldn't find resource at " + imagePath);
-            } else {
-                image = ImageIO.read(getClass().getResourceAsStream(imagePath));
-            }
-        } catch (IOException e) {
-            System.out.println("Couldn't load image at path " + imagePath);
-        }
-
-        return image;
-    }
 
     public void draw(Game game, Graphics2D g2) {
         g2.drawImage(sprite, x, y, game.getTileSize(), game.getTileSize(), null);

@@ -2,9 +2,13 @@ package game;
 
 import gameObjects.entity.player.Player;
 import input.KeyHandler;
+import tile.TileManager;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Game extends JPanel implements Runnable {
 
@@ -19,6 +23,7 @@ public class Game extends JPanel implements Runnable {
 
     final private int FPS = 60;
 
+    private TileManager tileManager = new TileManager(this);
     private KeyHandler key = new KeyHandler();
     private Thread gameThread;
     private Player player = new Player(this, key);
@@ -45,6 +50,7 @@ public class Game extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
+        tileManager.draw(g2);
         player.draw(this, g2);
         g2.dispose();
     }
@@ -82,5 +88,37 @@ public class Game extends JPanel implements Runnable {
 
     public int getTileSize() {
         return TILE_SIZE;
+    }
+
+    public int getTilePosition(int point) {
+        return TILE_SIZE * point;
+    }
+
+    public BufferedImage[] loadImages(String[] imagePaths){
+        BufferedImage[] images = new BufferedImage[imagePaths.length];
+
+        for(int i = 0; i < imagePaths.length; i++){
+            String path = imagePaths[i];
+
+            images[i] = loadImage(path);
+        }
+
+        return images;
+    }
+
+    public BufferedImage loadImage(String imagePath){
+        BufferedImage image = null;
+
+        try {
+            if(getClass().getResourceAsStream(imagePath) == null){
+                System.out.println("Couldn't find resource at " + imagePath);
+            } else {
+                image = ImageIO.read(getClass().getResourceAsStream(imagePath));
+            }
+        } catch (IOException e) {
+            System.out.println("Couldn't load image at path " + imagePath);
+        }
+
+        return image;
     }
 }
