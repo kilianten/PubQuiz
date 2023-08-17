@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 
 public class Player extends Entity implements PlayerImages {
 
-    private Game game;
+
     private KeyHandler key;
 
     private BufferedImage[] walkingDownImages;

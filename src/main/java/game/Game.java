@@ -1,5 +1,7 @@
 package game;
 
+import display.Camera;
+import display.Renderer;
 import gameObjects.entity.player.Player;
 import input.KeyHandler;
 import tile.TileManager;
@@ -13,9 +15,9 @@ import java.io.IOException;
 public class Game extends JPanel implements Runnable {
 
     // Screen Settings
-    final private int ORIGINAL_TILE_SIZE = 16;
-    final private int SCALE = 4;
-    final private int TILE_SIZE = ORIGINAL_TILE_SIZE * SCALE;
+    final static private int ORIGINAL_TILE_SIZE = 16;
+    final static public int SCALE = 4;
+    final static public int TILE_SIZE = ORIGINAL_TILE_SIZE * SCALE;
     final private int MAX_SCREEN_COL = 16;
     final private int MAX_SCREEN_ROW = 12;
     final private int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL;    // 768 Pixels
@@ -27,10 +29,13 @@ public class Game extends JPanel implements Runnable {
     private KeyHandler key = new KeyHandler();
     private Thread gameThread;
     private Player player = new Player(this, key);
+    private Camera camera = new Camera(player);
+    private Renderer renderer = new Renderer();
+
 
     public Game() {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-        this.setBackground(Color.WHITE);
+        this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.addKeyListener(key);
         this.setFocusable(true);
@@ -43,6 +48,7 @@ public class Game extends JPanel implements Runnable {
 
     public void update() {
         player.update();
+        camera.update(this);
     }
 
     public void paintComponent(Graphics g) {
@@ -50,8 +56,9 @@ public class Game extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        tileManager.draw(g2);
-        player.draw(this, g2);
+        renderer.renderMap(this, g2);
+        renderer.renderObject(this, g2, player);
+
         g2.dispose();
     }
 
@@ -121,4 +128,21 @@ public class Game extends JPanel implements Runnable {
 
         return image;
     }
+
+    public int getScreenWidth() {
+        return SCREEN_WIDTH;
+    }
+
+    public int getScreenHeight() {
+        return SCREEN_HEIGHT;
+    }
+
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public TileManager getTileManager() {
+        return tileManager;
+    }
+
 }

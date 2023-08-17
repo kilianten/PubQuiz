@@ -55,8 +55,6 @@ public class TileManager {
                 map[i][j] = tileType;
             }
         }
-
-
     }
 
     public void createTile(String tileName, String imagePath){
@@ -82,16 +80,13 @@ public class TileManager {
             default:
                 return "grass";
         }
-
     }
 
-    public void draw(Graphics2D g2) {
-        for(int i = 0; i < map.length; i++){
-            for(int j = 0; j < map[0].length; j++){
-                String tileType = map[i][j];
-                g2.drawImage(tiles.get(tileType).getSprite(), game.getTilePosition(i), game.getTilePosition(j), game.getTileSize(), game.getTileSize(), null);
-            }
-        }
+    public String[][] getMap() {
+        return map;
     }
 
+    public BufferedImage getTileSprite(int x, int y){
+        return tiles.get(map[x][y]).getSprite();
+    }
 }
