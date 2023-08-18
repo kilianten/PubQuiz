@@ -7,6 +7,7 @@ import graphics.ImageLoader;
 import input.KeyHandler;
 import game.Game;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
@@ -24,9 +25,11 @@ public class Player extends Entity implements PlayerImages {
     private BufferedImage standingUpSprite;
 
     public Player(Game game, KeyHandler key){
-        this.game = game;
+        super(game);
         this.key = key;
         setDefaultValues();
+        this.collisionBox = new Rectangle(0, 0, 32, 32);
+        adjustCollisionBox();
         loadImages();
     }
 
@@ -50,12 +53,7 @@ public class Player extends Entity implements PlayerImages {
 
     public void update() {
         super.update();
-        if(isWalking()) {
-            handleMotion();
-        } else {
-            sprite = getDefaultSprite();
-            animation = null;
-        }
+        game.getCollisionManager().checkTileCollisions(collisionBox);
     }
 
     public BufferedImage getDefaultSprite(){
@@ -95,7 +93,6 @@ public class Player extends Entity implements PlayerImages {
             direction = "up";
             y -= speed;
         }
-
 
     }
 

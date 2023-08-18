@@ -19,7 +19,7 @@ public class TileManager {
 
     public void getTileImages() {
         createTile("grass", "/tiles/grass.png");
-        createTile("brick", "/tiles/brick.png");
+        createTile("brick", "/tiles/brick.png", true);
         createTile("dirt", "/tiles/dirt.png");
         createTile("wood", "/tiles/wood.png");
         createTile("grassFlower01", "/tiles/grassFlower01.png");
@@ -32,5 +32,9 @@ public class TileManager {
 
     public void createTile(String tileName, String imagePath){
         tileMap.put(tileName, new Tile(ImageLoader.loadImage(imagePath)));
+    }
+
+    public void createTile(String tileName, String imagePath, boolean walkable){
+        tileMap.put(tileName, new Tile(ImageLoader.loadImage(imagePath), walkable));
     }
 }

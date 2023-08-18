@@ -1,6 +1,5 @@
 package gameObjects;
 
-import display.Camera;
 import game.Game;
 import gameObjects.graphics.Animation;
 
@@ -13,7 +12,8 @@ public class GameObject {
     protected BufferedImage sprite;
     protected Animation animation;
     protected BufferedImage defaultSprite;
-    protected Game game;
+    protected Rectangle collisionBox;
+    protected boolean canCollide = false;
 
     public void update() {
         if(this.animation != null){
@@ -43,6 +43,9 @@ public class GameObject {
     }
 
     public int getWidth(){
+        if(sprite == null){
+            System.out.println("SPRITE IS NULL: " + this);
+        }
         return sprite.getWidth() * Game.SCALE;
     }
 
@@ -50,15 +53,15 @@ public class GameObject {
         return sprite.getHeight() * Game.SCALE;
     }
 
-    public int getRenderPositionX(Camera camera) {
-        return x - camera.getX();
-    }
-
-    public int getRenderPositionY(Camera camera) {
-        return y - camera.getY();
-    }
-
     public BufferedImage getSprite() {
         return sprite;
+    }
+
+    public Rectangle getCollisionBox(){
+        return collisionBox;
+    }
+
+    public boolean collidesWith(Rectangle otherCollisionBox){
+        return collisionBox.intersects(otherCollisionBox.getBounds());
     }
 }

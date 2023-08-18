@@ -2,6 +2,7 @@ package display;
 
 import game.Game;
 import gameObjects.GameObject;
+import map.Tile;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,10 +18,17 @@ public class Renderer {
                 gameObject.getHeight(),
                 null
         );
+        if(true){
+            graphics.drawRect(
+                    (int) gameObject.getCollisionBox().getX() - game.getCamera().getX(),
+                    (int) gameObject.getCollisionBox().getY()  - game.getCamera().getY(),
+                    gameObject.getCollisionBox().width,
+                    gameObject.getCollisionBox().height);
+        }
     }
 
     public void renderMap(Game game, Graphics2D graphics) {
-        String[][] map = game.getGameMap().getMap();
+        Tile[][] map = game.getGameMap().getMap();
         Camera camera = game.getCamera();
 
         int startX = Math.max(0, camera.getX() / Game.TILE_SIZE - Game.TILE_SIZE);

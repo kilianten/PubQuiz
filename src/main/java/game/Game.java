@@ -6,11 +6,8 @@ import gameObjects.entity.player.Player;
 import input.KeyHandler;
 import map.GameMap;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class Game extends JPanel implements Runnable {
 
@@ -25,8 +22,9 @@ public class Game extends JPanel implements Runnable {
 
     final private int FPS = 60;
 
-    private GameMap gameMap = new GameMap(this);
+    private GameMap gameMap = new GameMap();
     private KeyHandler key = new KeyHandler();
+    private CollisionManager collisionManager = new CollisionManager(this);
     private Thread gameThread;
     private Player player = new Player(this, key);
     private Camera camera = new Camera(player);
@@ -69,13 +67,10 @@ public class Game extends JPanel implements Runnable {
         double delta = 0;
         long currentTime;
         long lastTime = System.nanoTime();
-        long timer = 0;
-        int drawCount = 0;
 
         while(gameThread != null){
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
-            timer += (currentTime - lastTime);
 
             lastTime = currentTime;
 
@@ -83,12 +78,6 @@ public class Game extends JPanel implements Runnable {
                 update();
                 repaint();
                 delta--;
-                drawCount++;
-            }
-
-            if(timer >= 1000000000){
-                drawCount = 0;
-                timer = 0;
             }
         }
     }
@@ -96,8 +85,6 @@ public class Game extends JPanel implements Runnable {
     public int getTileSize() {
         return TILE_SIZE;
     }
-
-
 
     public int getScreenWidth() {
         return SCREEN_WIDTH;
@@ -113,6 +100,10 @@ public class Game extends JPanel implements Runnable {
 
     public GameMap getGameMap() {
         return gameMap;
+    }
+
+    public CollisionManager getCollisionManager(){
+        return collisionManager;
     }
 
 }

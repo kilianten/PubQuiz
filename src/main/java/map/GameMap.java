@@ -4,7 +4,6 @@ import game.Game;
 import graphics.ImageLoader;
 
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -13,8 +12,7 @@ import static java.util.Map.entry;
 
 public class GameMap {
 
-    private Game game;
-    private String[][] map;
+    private Tile[][] map;
     private TileManager tileManager;
 
     Map<Integer, String> HEX_TO_TILE_MAP = Map.ofEntries(
@@ -23,8 +21,7 @@ public class GameMap {
             entry(0xff1F911a, "grass")
     );
 
-    public GameMap(Game game) {
-        this.game = game;
+    public GameMap() {
         tileManager = new TileManager();
         loadMap("/maps/map01.png");
     }
@@ -52,23 +49,23 @@ public class GameMap {
 
     public void loadMap(String mapPath){
         BufferedImage mapImage = ImageLoader.loadImage(mapPath);
-        map = new String[mapImage.getWidth()][mapImage.getHeight()];
+        map = new Tile[mapImage.getWidth()][mapImage.getHeight()];
         for(int i = 0; i < mapImage.getWidth(); i++){
             for(int j = 0; j < mapImage.getHeight(); j++){
                 String tileType = HEX_TO_TILE_MAP.get(mapImage.getRGB(i, j));
                 if(tileType.equals("grass")){
                     tileType = randomiseGrass();
                 }
-                map[i][j] = tileType;
+                map[i][j] = tileManager.getTile(tileType);
             }
         }
     }
 
-    public String[][] getMap() {
+    public Tile[][] getMap() {
         return map;
     }
 
     public BufferedImage getTileSprite(int x, int y){
-        return tileManager.getTile(map[x][y]).getSprite();
+        return map[x][y].getSprite();
     }
 }
