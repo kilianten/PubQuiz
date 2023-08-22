@@ -2,12 +2,16 @@ package game;
 
 import display.Camera;
 import display.Renderer;
+import gameObjects.GameObject;
 import gameObjects.entity.player.Player;
+import gameObjects.interactiveObjects.Book;
+import gameObjects.interactiveObjects.InteractiveObject;
 import input.KeyHandler;
 import map.GameMap;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Game extends JPanel implements Runnable {
 
@@ -29,7 +33,7 @@ public class Game extends JPanel implements Runnable {
     private Player player = new Player(this, key);
     private Camera camera = new Camera(player);
     private Renderer renderer = new Renderer();
-
+    private ArrayList<GameObject> gameObjects = new ArrayList<>();
 
     public Game() {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -37,6 +41,7 @@ public class Game extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(key);
         this.setFocusable(true);
+        gameObjects.add(new Book());
     }
 
     public void startGameThread() {
@@ -56,6 +61,9 @@ public class Game extends JPanel implements Runnable {
 
         renderer.renderMap(this, g2);
         renderer.renderObject(this, g2, player);
+        for(GameObject gameObject: gameObjects){
+            renderer.renderObject(this, g2, gameObject);
+        }
 
         g2.dispose();
     }
@@ -106,4 +114,7 @@ public class Game extends JPanel implements Runnable {
         return collisionManager;
     }
 
+    public ArrayList<GameObject> getGameObjects() {
+        return gameObjects;
+    }
 }

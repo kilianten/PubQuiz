@@ -45,8 +45,4 @@ public abstract class Entity extends GameObject {
         collisionBox.y = y + (collisionBoxOffsetY * Game.SCALE);
     }
 
-    public void handleTileCollision(Tile tile){
-
-    }
-
 }

@@ -1,6 +1,5 @@
 package map;
 
-import game.Game;
 import graphics.ImageLoader;
 
 import java.awt.image.BufferedImage;

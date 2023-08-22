@@ -3,6 +3,7 @@ package gameObjects.entity.player;
 
 import gameObjects.entity.Entity;
 import gameObjects.graphics.Animation;
+import gameObjects.interactiveObjects.InteractiveObject;
 import graphics.ImageLoader;
 import input.KeyHandler;
 import game.Game;
@@ -10,6 +11,7 @@ import game.Game;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.stream.Collectors;
 
 public class Player extends Entity implements PlayerImages {
 
@@ -53,7 +55,7 @@ public class Player extends Entity implements PlayerImages {
 
     public void update() {
         super.update();
-        game.getCollisionManager().checkTileCollisions(collisionBox);
+        findNearestInteractiveObject(game);
     }
 
     public BufferedImage getDefaultSprite(){
@@ -68,32 +70,39 @@ public class Player extends Entity implements PlayerImages {
     }
 
     public void handleMotion(){
+        int newX = 0, newY = 0;
+
         if(key.isCurrentlyPressed(KeyEvent.VK_S)){
             if(key.isPressed(KeyEvent.VK_S)){
                 animation = new Animation(walkingDownImages, true);
             }
             direction = "down";
-            y += speed;
+            newY += speed;
         } else if(key.isCurrentlyPressed(KeyEvent.VK_D)){
             if(key.isPressed(KeyEvent.VK_D)){
                 animation = new Animation(walkingRightImages, true);
             }
             direction = "right";
-            x += speed;
+            newX += speed;
         } else if(key.isCurrentlyPressed(KeyEvent.VK_A)){
             if(key.isPressed(KeyEvent.VK_A)){
                 animation = new Animation(walkingLeftImages, true);
             }
             direction = "left";
-            x -= speed;
+            newX -= speed;
         } else if(key.isCurrentlyPressed(KeyEvent.VK_W)){
             if(key.isPressed(KeyEvent.VK_W)){
                 animation = new Animation(walkingUpImages, true);
             }
             direction = "up";
-            y -= speed;
+            newY -= speed;
         }
 
+        Rectangle newCollisionBox = new Rectangle(collisionBox.x + newX, collisionBox.y + newY, collisionBox.width, collisionBox.height);
+        if(game.getCollisionManager().checkTileCollisions(newCollisionBox) == null){
+            x += newX;
+            y += newY;
+        }
     }
 
     public boolean isWalking(){
@@ -101,6 +110,13 @@ public class Player extends Entity implements PlayerImages {
                 key.isCurrentlyPressed(KeyEvent.VK_A) |
                 key.isCurrentlyPressed(KeyEvent.VK_S) |
                 key.isCurrentlyPressed(KeyEvent.VK_D);
+    }
+
+    public void findNearestInteractiveObject(Game game) {
+        System.out.println(game.getGameObjects().size());
+        game.getGameObjects().stream()
+                .filter(InteractiveObject.class::isInstance)
+                .collect(Collectors.toList());
     }
 
 }

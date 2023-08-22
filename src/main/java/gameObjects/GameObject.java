@@ -64,4 +64,11 @@ public class GameObject {
     public boolean collidesWith(Rectangle otherCollisionBox){
         return collisionBox.intersects(otherCollisionBox.getBounds());
     }
+
+    public double distanceTo(GameObject other){
+        double deltaX = this.getX() - other.getX();
+        double deltaY = this.getY() - other.getY();
+
+        return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
 }

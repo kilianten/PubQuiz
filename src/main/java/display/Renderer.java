@@ -18,7 +18,7 @@ public class Renderer {
                 gameObject.getHeight(),
                 null
         );
-        if(true){
+        if(true && gameObject.getCollisionBox() != null){
             graphics.drawRect(
                     (int) gameObject.getCollisionBox().getX() - game.getCamera().getX(),
                     (int) gameObject.getCollisionBox().getY()  - game.getCamera().getY(),

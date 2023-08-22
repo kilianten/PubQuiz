@@ -18,7 +18,6 @@ public class CollisionManager {
             for(int j = 0; j < gameMap[0].length; j++) {
                 Tile tile = gameMap[i][j];
                 if(tile.hasCollision() && rectangle.intersects(tile.getCollisionBox(i, j))){
-                    System.out.println("COLLIDING with: " + tile);
                     return tile;
                 }
             }
