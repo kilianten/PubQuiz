@@ -4,7 +4,7 @@ import gameObjects.entity.Entity;
 import gameObjects.graphics.Animation;
 import gameObjects.interactiveObjects.InteractiveObject;
 import graphics.ImageLoader;
-import input.KeyHandler;
+
 import game.Game;
 
 import java.awt.*;
@@ -12,11 +12,10 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Comparator;
 import java.util.Optional;
+import game.state.State;
+import input.KeyHandler;
 
 public class Player extends Entity implements PlayerImages {
-
-
-    private KeyHandler key;
 
     private BufferedImage[] walkingDownImages;
     private BufferedImage[] walkingRightImages;
@@ -28,9 +27,8 @@ public class Player extends Entity implements PlayerImages {
 
     private InteractiveObject interactiveObject;
 
-    public Player(Game game, KeyHandler key){
-        super(game);
-        this.key = key;
+    public Player(){
+        super();
         setDefaultValues();
         this.collisionBox = new Rectangle(0, 0, 32, 32);
         adjustCollisionBox();
@@ -56,20 +54,20 @@ public class Player extends Entity implements PlayerImages {
         interactiveObject = null;
     }
 
-    public void update() {
-        super.update();
-        checkNearbyInteractiveObjects();
-        handleInput();
+    public void update(State state) {
+        super.update(state);
+        checkNearbyInteractiveObjects(state);
+        handleInput(state);
     }
 
-    private void handleInput() {
-        if(key.isPressed(KeyEvent.VK_E) && interactiveObject != null){
-            interactiveObject.interactWith(game);
+    private void handleInput(State state) {
+        if(state.getKey().isPressed(KeyEvent.VK_E) && interactiveObject != null){
+            interactiveObject.interactWith(state);
         }
     }
 
-    private void checkNearbyInteractiveObjects() {
-        Optional<InteractiveObject> nearObject = findNearestInteractiveObject(game);
+    private void checkNearbyInteractiveObjects(State state) {
+        Optional<InteractiveObject> nearObject = findNearestInteractiveObject(state);
         if(nearObject.isPresent()){
             interactiveObject = nearObject.get();
         } else {
@@ -88,29 +86,29 @@ public class Player extends Entity implements PlayerImages {
         }
     }
 
-    public void handleMotion(){
+    public void handleMotion(State state){
         int newX = 0, newY = 0;
 
-        if(key.isCurrentlyPressed(KeyEvent.VK_S)){
-            if(key.isPressed(KeyEvent.VK_S)){
+        if(state.getKey().isCurrentlyPressed(KeyEvent.VK_S)){
+            if(state.getKey().isPressed(KeyEvent.VK_S)){
                 animation = new Animation(walkingDownImages, true);
             }
             direction = "down";
             newY += speed;
-        } else if(key.isCurrentlyPressed(KeyEvent.VK_D)){
-            if(key.isPressed(KeyEvent.VK_D)){
+        } else if(state.getKey().isCurrentlyPressed(KeyEvent.VK_D)){
+            if(state.getKey().isPressed(KeyEvent.VK_D)){
                 animation = new Animation(walkingRightImages, true);
             }
             direction = "right";
             newX += speed;
-        } else if(key.isCurrentlyPressed(KeyEvent.VK_A)){
-            if(key.isPressed(KeyEvent.VK_A)){
+        } else if(state.getKey().isCurrentlyPressed(KeyEvent.VK_A)){
+            if(state.getKey().isPressed(KeyEvent.VK_A)){
                 animation = new Animation(walkingLeftImages, true);
             }
             direction = "left";
             newX -= speed;
-        } else if(key.isCurrentlyPressed(KeyEvent.VK_W)){
-            if(key.isPressed(KeyEvent.VK_W)){
+        } else if(state.getKey().isCurrentlyPressed(KeyEvent.VK_W)){
+            if(state.getKey().isPressed(KeyEvent.VK_W)){
                 animation = new Animation(walkingUpImages, true);
             }
             direction = "up";
@@ -118,21 +116,21 @@ public class Player extends Entity implements PlayerImages {
         }
 
         Rectangle newCollisionBox = new Rectangle(collisionBox.x + newX, collisionBox.y + newY, collisionBox.width, collisionBox.height);
-        if(game.getCollisionManager().checkTileCollisions(newCollisionBox) == null){
+        if(state.getCollisionManager().checkTileCollisions(newCollisionBox) == null){
             x += newX;
             y += newY;
         }
     }
 
-    public boolean isWalking(){
-        return key.isCurrentlyPressed(KeyEvent.VK_W) |
-                key.isCurrentlyPressed(KeyEvent.VK_A) |
-                key.isCurrentlyPressed(KeyEvent.VK_S) |
-                key.isCurrentlyPressed(KeyEvent.VK_D);
+    public boolean isWalking(State state){
+        return state.getKey().isCurrentlyPressed(KeyEvent.VK_W) |
+                state.getKey().isCurrentlyPressed(KeyEvent.VK_A) |
+                state.getKey().isCurrentlyPressed(KeyEvent.VK_S) |
+                state.getKey().isCurrentlyPressed(KeyEvent.VK_D);
     }
 
-    public Optional<InteractiveObject> findNearestInteractiveObject(Game game) {
-        return game.getInteractiveGameObjects().stream()
+    public Optional<InteractiveObject> findNearestInteractiveObject(State state) {
+        return state.getInteractiveGameObjects().stream()
                 .filter(gameObject -> distanceTo(gameObject) < Game.TILE_SIZE * 1.5)
                 .filter(gameObject -> isFacing(gameObject))
                 .min(Comparator.comparingDouble(gameObject -> distanceTo(gameObject)));

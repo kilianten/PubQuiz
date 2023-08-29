@@ -5,6 +5,7 @@ import gameObjects.graphics.Animation;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import game.state.State;
 
 public class GameObject {
 
@@ -16,7 +17,7 @@ public class GameObject {
     protected boolean canCollide = false;
     protected String direction;
 
-    public void update() {
+    public void update(State state) {
         if(this.animation != null){
             animation.update(this);
         }

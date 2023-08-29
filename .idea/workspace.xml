@@ -4,23 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="Added Renderer and Gameobjects">
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game/state/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sound/Sound.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ui/UI.java" afterDir="false" />
+    <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/display/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/display/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/display/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/display/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/CollisionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/state/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/state/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/graphics/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/graphics/Animation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/InteractiveObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/InteractiveObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics/ImageLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/map/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/map/GameMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/map/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +148,14 @@
       <option name="presentableId" value="Default" />
       <updated>1692187164474</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added Renderer and Gameobjects">
+      <created>1693323268561</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1693323268562</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

@@ -1,6 +1,7 @@
 package ui;
 
 import game.Game;
+import game.state.GameState;
 import gameObjects.entity.player.Player;
 import gameObjects.interactiveObjects.InteractiveObject;
 
@@ -13,16 +14,16 @@ public class UI {
     private int x;
     private int y;
 
-    public UI(Game game){
+    public UI(){
         arial = new Font("Arial", Font.PLAIN, 15);
-        x = game.getScreenWidth() / 2;
-        y = game.getScreenHeight() / 2 - Game.TILE_SIZE / 4;
+        x = Game.SCREEN_WIDTH / 2;
+        y = Game.SCREEN_HEIGHT / 2 - Game.TILE_SIZE / 4;
     }
 
-    public void draw(Graphics2D g2, Game game){
+    public void draw(Graphics2D g2, GameState state){
         g2.setFont(arial);
         g2.setColor(Color.WHITE);
-        Player player = game.getPlayer();
+        Player player = state.getPlayer();
         InteractiveObject interactiveObject = player.getInteractiveObject();
         if(interactiveObject != null){
             Rectangle2D r = arial.getStringBounds(interactiveObject.getInteractingMessage(), g2.getFontRenderContext());

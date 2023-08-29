@@ -17,18 +17,18 @@ public class Camera {
         this.objectWithFocus = objectWithFocus;
     }
 
-    public void update(Game game) {
-        this.x = objectWithFocus.getX() - (game.getScreenWidth()/ 2);
-        this.y = objectWithFocus.getY() - (game.getScreenHeight() / 2);
-        calculateViewBounds(game);
+    public void update() {
+        this.x = objectWithFocus.getX() - (Game.SCREEN_WIDTH/ 2);
+        this.y = objectWithFocus.getY() - (Game.SCREEN_HEIGHT / 2);
+        calculateViewBounds();
     }
 
-    private void calculateViewBounds(Game game) {
+    private void calculateViewBounds() {
         viewBounds = new Rectangle(
                 x,
                 y,
-                game.getScreenWidth(),
-                game.getScreenHeight()
+                Game.SCREEN_WIDTH,
+                Game.SCREEN_HEIGHT
         );
     }
 

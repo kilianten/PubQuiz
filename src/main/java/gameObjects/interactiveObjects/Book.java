@@ -1,6 +1,6 @@
 package gameObjects.interactiveObjects;
 
-import game.Game;
+import game.state.State;
 import gameObjects.graphics.Animation;
 import graphics.ImageLoader;
 
@@ -28,8 +28,8 @@ public class Book extends InteractiveObject {
     }
 
     @Override
-    public void interactWith(Game game) {
-        game.playSound("book");
+    public void interactWith(State state) {
+        state.playSound("book");
         this.animation = new Animation(ImageLoader.loadImages(OPENING_BOOK_IMAGES));
     }
 

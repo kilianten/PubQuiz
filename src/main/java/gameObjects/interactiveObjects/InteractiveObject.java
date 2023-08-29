@@ -1,6 +1,6 @@
 package gameObjects.interactiveObjects;
 
-import game.Game;
+import game.state.State;
 import gameObjects.GameObject;
 import graphics.ImageLoader;
 
@@ -20,5 +20,5 @@ public abstract class InteractiveObject extends GameObject {
 
     public abstract String getInteractingMessage();
 
-    public abstract void interactWith(Game game);
+    public abstract void interactWith(State state);
 }

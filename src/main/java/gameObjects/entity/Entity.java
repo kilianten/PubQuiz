@@ -1,6 +1,7 @@
 package gameObjects.entity;
 
 import game.Game;
+import game.state.State;
 import gameObjects.GameObject;
 
 import java.awt.image.BufferedImage;
@@ -10,16 +11,14 @@ public abstract class Entity extends GameObject {
     protected int speed;
     protected int collisionBoxOffsetX = 4;
     protected int collisionBoxOffsetY = 8;
-    protected Game game;
 
-    public Entity(Game game){
-        this.game = game;
+    public Entity(){
     }
 
-    public void update(){
-        super.update();
-        if(isWalking()) {
-            handleMotion();
+    public void update(State state){
+        super.update(state);
+        if(isWalking(state)) {
+            handleMotion(state);
             adjustCollisionBox();
         } else {
             sprite = getDefaultSprite();
@@ -27,11 +26,11 @@ public abstract class Entity extends GameObject {
         }
     }
 
-    public boolean isWalking() {
+    public boolean isWalking(State state) {
         return false;
     }
 
-    public void handleMotion(){
+    public void handleMotion(State state){
     }
 
     public BufferedImage getDefaultSprite(){
