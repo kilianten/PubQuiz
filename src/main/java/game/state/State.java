@@ -10,6 +10,7 @@ import map.GameMap;
 import sound.Sound;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public abstract class State {
@@ -20,8 +21,10 @@ public abstract class State {
     private CollisionManager collisionManager = new CollisionManager(this);
     protected KeyHandler key;
     protected Sound sound = new Sound();
+    private boolean isPaused;
 
     public void update() {
+        checkPause();
         for(GameObject gameObject: gameObjects){
             gameObject.update(this);
         }
@@ -65,5 +68,17 @@ public abstract class State {
         sound.play();
     }
 
+    public boolean isPaused() {
+        return isPaused;
+    }
 
+    public void checkPause() {
+        if(key.isPressed(KeyEvent.VK_ESCAPE)){
+            isPaused = true;
+        }
+    }
+
+    public void unPause() {
+        isPaused = false;
+    }
 }

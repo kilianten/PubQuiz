@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/state/PauseState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/display/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/display/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/display/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/display/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/CollisionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/state/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/state/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/InteractiveObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/InteractiveObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,11 +147,19 @@
       <option name="project" value="LOCAL" />
       <updated>1693323268562</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added GameState and State abstract class">
+      <created>1693343468642</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693343468642</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Renderer and Gameobjects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Renderer and Gameobjects" />
+    <MESSAGE value="Added GameState and State abstract class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GameState and State abstract class" />
   </component>
 </project>

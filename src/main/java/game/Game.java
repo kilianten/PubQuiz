@@ -2,6 +2,7 @@ package game;
 
 import display.Renderer;
 import game.state.GameState;
+import game.state.PauseState;
 import input.KeyHandler;
 
 import sound.Sound;
@@ -27,6 +28,7 @@ public class Game extends JPanel implements Runnable {
 
     private Renderer renderer = new Renderer();
     private State state;
+    private GameState gameState;
 
     public Game() {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -34,7 +36,8 @@ public class Game extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(key);
         this.setFocusable(true);
-        this.state = new GameState(key);
+        this.gameState = new GameState(key);
+        this.state = gameState;
     }
 
     public void startGameThread() {
@@ -43,6 +46,14 @@ public class Game extends JPanel implements Runnable {
     }
 
     public void update() {
+        if(state.isPaused()){
+            state.unPause();
+            if(state instanceof GameState){
+                this.state = new PauseState(key);
+            } else {
+                this.state = gameState;
+            }
+        }
         state.update();
     }
 

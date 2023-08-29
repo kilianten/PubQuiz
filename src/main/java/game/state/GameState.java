@@ -9,6 +9,7 @@ import input.KeyHandler;
 import ui.UI;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class GameState extends State {
 
@@ -22,6 +23,7 @@ public class GameState extends State {
     }
 
     public void update() {
+        super.update();
         player.update(this);
         camera.update();
     }
