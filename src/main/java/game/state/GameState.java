@@ -6,15 +6,15 @@ import gameObjects.GameObject;
 import gameObjects.entity.player.Player;
 import gameObjects.interactiveObjects.Book;
 import input.KeyHandler;
-import ui.UI;
+import ui.UIText;
+import ui.UITextItemPickup;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class GameState extends State {
 
     private Player player = new Player();
-    private UI ui = new UI();
+    private UITextItemPickup ui = new UITextItemPickup();
 
     public GameState(KeyHandler key){
         camera = new Camera(player);
