@@ -2,14 +2,12 @@ package gameObjects.entity;
 
 import game.Game;
 import gameObjects.GameObject;
-import map.Tile;
 
 import java.awt.image.BufferedImage;
 
 public abstract class Entity extends GameObject {
 
     protected int speed;
-    protected String direction;
     protected int collisionBoxOffsetX = 4;
     protected int collisionBoxOffsetY = 8;
     protected Game game;

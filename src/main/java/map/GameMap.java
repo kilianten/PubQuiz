@@ -1,8 +1,12 @@
 package map;
 
+import game.Game;
 import graphics.ImageLoader;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.Random;
 
@@ -47,7 +51,14 @@ public class GameMap {
     }
 
     public void loadMap(String mapPath){
-        BufferedImage mapImage = ImageLoader.loadImage(mapPath);
+        InputStream inputStream = Game.class.getResourceAsStream(mapPath);
+        BufferedImage mapImage = null;
+        try {
+            mapImage= ImageIO.read(inputStream);
+        } catch (IOException e) {
+
+        }
+
         map = new Tile[mapImage.getWidth()][mapImage.getHeight()];
         for(int i = 0; i < mapImage.getWidth(); i++){
             for(int j = 0; j < mapImage.getHeight(); j++){

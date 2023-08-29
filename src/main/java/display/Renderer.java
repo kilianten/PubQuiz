@@ -14,8 +14,8 @@ public class Renderer {
                 gameObject.getSprite(),
                 gameObject.getX() - game.getCamera().getX(),
                 gameObject.getY() - game.getCamera().getY(),
-                gameObject.getWidth(),
-                gameObject.getHeight(),
+                game.getTileSize(),
+                game.getTileSize(),
                 null
         );
         if(true && gameObject.getCollisionBox() != null){
@@ -46,8 +46,8 @@ public class Renderer {
                 graphics.drawImage(game.getGameMap().getTileSprite(x, y),
                         drawPositionX,
                         drawPositionY,
-                        image.getWidth() * Game.SCALE,
-                        image.getHeight() * Game.SCALE,
+                        game.getTileSize(),
+                        game.getTileSize(),
                         null
                 );
             }

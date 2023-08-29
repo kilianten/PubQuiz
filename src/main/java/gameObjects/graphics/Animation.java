@@ -41,6 +41,7 @@ public class Animation {
                     gameObject.setSprite(images[currentIndex]);
                 } else {
                     gameObject.setAnimation(null);
+                    gameObject.setDefaultSprite();
                 }
             } else {
                 gameObject.setSprite(images[currentIndex]);

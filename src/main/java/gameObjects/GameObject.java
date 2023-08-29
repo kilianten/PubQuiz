@@ -14,6 +14,7 @@ public class GameObject {
     protected BufferedImage defaultSprite;
     protected Rectangle collisionBox;
     protected boolean canCollide = false;
+    protected String direction;
 
     public void update() {
         if(this.animation != null){
@@ -70,5 +71,35 @@ public class GameObject {
         double deltaY = this.getY() - other.getY();
 
         return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
+
+    public boolean isFacing(GameObject other){
+        double distanceX = getX() - other.getX();
+        double distanceY = getY() - other.getY();
+        double length = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        distanceX = distanceX == 0 ? 0 : distanceX/length;
+        distanceY = distanceY == 0 ? 0 : distanceY/length;
+        double dotProduct = distanceX * getXDirection() + distanceY * getYDirection();
+        return dotProduct < 0;
+    }
+
+    public int getYDirection(){
+        if(direction == "up"){
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
+    public int getXDirection(){
+        if(direction == "right"){
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    public void setDefaultSprite() {
+        setSprite(defaultSprite);
     }
 }

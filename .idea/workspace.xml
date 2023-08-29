@@ -4,21 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/InteractiveObject.java" afterDir="false" />
+    <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="Added Renderer and Gameobjects">
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/game/state/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sound/Sound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ui/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/display/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/display/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/CollisionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/graphics/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/graphics/Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/InteractiveObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/InteractiveObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphics/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphics/ImageLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/map/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/map/GameMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/items/beerPint/beer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/objects/beerPint/beer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/items/beerPint/beer01.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/objects/beerPint/beer01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/items/beerPint/beer02.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/objects/beerPint/beer02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/items/beerPint/beer03.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/objects/beerPint/beer03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/items/beerPint/beer04.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/objects/beerPint/beer04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/map/Tile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,5 +152,9 @@
       <updated>1692187164474</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Renderer and Gameobjects" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Renderer and Gameobjects" />
   </component>
 </project>

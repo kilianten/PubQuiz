@@ -31,7 +31,7 @@ public class Tile {
         return new Rectangle(
                 xGrid * Game.TILE_SIZE,
                 yGrid * Game.TILE_SIZE,
-                sprite.getWidth() * Game.SCALE,
-                sprite.getHeight() * Game.SCALE);
+                sprite.getWidth(),
+                sprite.getHeight());
     }
 }

@@ -1,6 +1,5 @@
 package gameObjects.entity.player;
 
-
 import gameObjects.entity.Entity;
 import gameObjects.graphics.Animation;
 import gameObjects.interactiveObjects.InteractiveObject;
@@ -11,7 +10,8 @@ import game.Game;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.Optional;
 
 public class Player extends Entity implements PlayerImages {
 
@@ -25,6 +25,8 @@ public class Player extends Entity implements PlayerImages {
 
     private BufferedImage standingLeftSprite;
     private BufferedImage standingUpSprite;
+
+    private InteractiveObject interactiveObject;
 
     public Player(Game game, KeyHandler key){
         super(game);
@@ -51,11 +53,28 @@ public class Player extends Entity implements PlayerImages {
         y = 1000;
         direction = "down";
         sprite = defaultSprite;
+        interactiveObject = null;
     }
 
     public void update() {
         super.update();
-        findNearestInteractiveObject(game);
+        checkNearbyInteractiveObjects();
+        handleInput();
+    }
+
+    private void handleInput() {
+        if(key.isPressed(KeyEvent.VK_E) && interactiveObject != null){
+            interactiveObject.interactWith(game);
+        }
+    }
+
+    private void checkNearbyInteractiveObjects() {
+        Optional<InteractiveObject> nearObject = findNearestInteractiveObject(game);
+        if(nearObject.isPresent()){
+            interactiveObject = nearObject.get();
+        } else {
+            interactiveObject = null;
+        }
     }
 
     public BufferedImage getDefaultSprite(){
@@ -112,11 +131,15 @@ public class Player extends Entity implements PlayerImages {
                 key.isCurrentlyPressed(KeyEvent.VK_D);
     }
 
-    public void findNearestInteractiveObject(Game game) {
-        System.out.println(game.getGameObjects().size());
-        game.getGameObjects().stream()
-                .filter(InteractiveObject.class::isInstance)
-                .collect(Collectors.toList());
+    public Optional<InteractiveObject> findNearestInteractiveObject(Game game) {
+        return game.getInteractiveGameObjects().stream()
+                .filter(gameObject -> distanceTo(gameObject) < Game.TILE_SIZE * 1.5)
+                .filter(gameObject -> isFacing(gameObject))
+                .min(Comparator.comparingDouble(gameObject -> distanceTo(gameObject)));
+    }
+
+    public InteractiveObject getInteractiveObject() {
+        return interactiveObject;
     }
 
 }
