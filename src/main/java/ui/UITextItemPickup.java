@@ -10,7 +10,9 @@ import java.awt.geom.Rectangle2D;
 public class UITextItemPickup extends UIText {
 
     public UITextItemPickup() {
-
+        arial = new Font("Arial", Font.PLAIN, 20);
+        x = (Game.SCREEN_WIDTH / 2);
+        y = (Game.SCREEN_HEIGHT / 2) - Game.TILE_SIZE / 2;
     }
 
     public void draw(Graphics2D g2, GameState state){

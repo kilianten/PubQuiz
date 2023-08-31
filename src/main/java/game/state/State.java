@@ -21,7 +21,7 @@ public abstract class State {
     private CollisionManager collisionManager = new CollisionManager(this);
     protected KeyHandler key;
     protected Sound sound = new Sound();
-    private boolean isPaused;
+    protected boolean isPaused;
 
     public void update() {
         checkPause();
