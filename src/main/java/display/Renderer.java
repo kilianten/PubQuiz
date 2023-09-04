@@ -2,6 +2,7 @@ package display;
 
 import game.Game;
 import gameObjects.GameObject;
+import gameObjects.entity.player.Player;
 import map.Tile;
 import game.state.State;
 
@@ -19,7 +20,12 @@ public class Renderer {
                 Game.TILE_SIZE,
                 null
         );
-        if(true && gameObject.getCollisionBox() != null){
+        if(gameObject.getCollisionBox() != null){
+            if(gameObject instanceof Player){
+                graphics.setColor(Color.RED);
+            } else {
+                graphics.setColor(Color.BLUE);
+            }
             graphics.drawRect(
                     (int) gameObject.getCollisionBox().getX() - state.getCamera().getX(),
                     (int) gameObject.getCollisionBox().getY()  - state.getCamera().getY(),

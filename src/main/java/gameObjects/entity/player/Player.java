@@ -114,7 +114,8 @@ public class Player extends Entity implements PlayerImages {
         }
 
         Rectangle newCollisionBox = new Rectangle(collisionBox.x + newX, collisionBox.y + newY, collisionBox.width, collisionBox.height);
-        if(state.getCollisionManager().checkTileCollisions(newCollisionBox) == null){
+        if(state.getCollisionManager().checkTileCollisions(newCollisionBox) == null
+        && !state.getCollisionManager().isCollidingWithObject(newCollisionBox)) {
             x += newX;
             y += newY;
         }

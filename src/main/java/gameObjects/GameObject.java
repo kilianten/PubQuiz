@@ -15,7 +15,7 @@ public class GameObject {
     protected Animation animation;
     protected BufferedImage defaultSprite;
     protected Rectangle collisionBox;
-    protected boolean canCollide = false;
+    protected boolean isWalkable = true;
     protected String direction;
 
     public GameObject(int x, int y){
@@ -119,4 +119,7 @@ public class GameObject {
         setSprite(defaultSprite);
     }
 
+    public boolean isWalkable() {
+        return isWalkable;
+    }
 }

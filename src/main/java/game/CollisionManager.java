@@ -25,4 +25,9 @@ public class CollisionManager {
         return null;
     }
 
+    public boolean isCollidingWithObject(Rectangle newCollisionBox) {
+        return state.getGameObjects().stream()
+                .filter(gameObject -> !gameObject.isWalkable())
+                .anyMatch(gameObject -> gameObject.collidesWith(newCollisionBox));
+    }
 }
