@@ -3,6 +3,7 @@ package game.state;
 import display.Camera;
 import display.Renderer;
 import gameObjects.GameObject;
+import gameObjects.entity.npc.bar.bartender.Bartender;
 import gameObjects.entity.player.Player;
 import gameObjects.interactiveObjects.Book;
 import input.KeyHandler;
@@ -20,6 +21,7 @@ public class GameState extends State {
         camera = new Camera(player);
         gameObjects.add(new Book("Principia"));
         this.key = key;
+        gameObjects.add(new Bartender());
     }
 
     public void update() {
