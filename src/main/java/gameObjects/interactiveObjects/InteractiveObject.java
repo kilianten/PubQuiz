@@ -2,6 +2,7 @@ package gameObjects.interactiveObjects;
 
 import game.state.State;
 import gameObjects.GameObject;
+import gameObjects.entity.Entity;
 import graphics.ImageLoader;
 
 public abstract class InteractiveObject extends GameObject {
@@ -14,11 +15,16 @@ public abstract class InteractiveObject extends GameObject {
         this.defaultSprite = sprite;
     }
 
+    public InteractiveObject(String name, String imageFile, int x, int y){
+        super(x, y, imageFile);
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
 
     public abstract String getInteractingMessage();
 
-    public abstract void interactWith(State state);
+    public abstract void interactWith(State state, Entity entity);
 }

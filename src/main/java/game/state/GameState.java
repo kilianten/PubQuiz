@@ -5,7 +5,9 @@ import display.Renderer;
 import gameObjects.GameObject;
 import gameObjects.entity.npc.bar.bartender.Bartender;
 import gameObjects.entity.player.Player;
+import gameObjects.interactiveObjects.BeerPint;
 import gameObjects.interactiveObjects.Book;
+import gameObjects.scenery.BarCounter;
 import input.KeyHandler;
 import ui.UIText;
 import ui.UITextItemPickup;
@@ -20,6 +22,10 @@ public class GameState extends State {
     public GameState(KeyHandler key){
         camera = new Camera(player);
         gameObjects.add(new Book("Principia"));
+        gameObjects.add(new BeerPint("Beer"));
+        gameObjects.add(new BarCounter(3, 3));
+        gameObjects.add(new BarCounter(4, 3));
+        gameObjects.add(new BarCounter(5, 3));
         this.key = key;
         gameObjects.add(new Bartender());
     }

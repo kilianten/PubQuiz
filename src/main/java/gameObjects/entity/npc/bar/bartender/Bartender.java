@@ -7,9 +7,7 @@ import graphics.ImageLoader;
 public class Bartender extends NPC {
 
     public Bartender(){
-        x = 4 * Game.TILE_SIZE;
-        y = 2 * Game.TILE_SIZE;
-        defaultSprite = ImageLoader.loadImage("/npc/bartender/standing.png");
-        sprite = defaultSprite;
+        super(4 * Game.TILE_SIZE, 2 * Game.TILE_SIZE, "/npc/bartender/standing.png");
+        defaultSprite = sprite;
     }
 }

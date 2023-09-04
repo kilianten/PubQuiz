@@ -12,7 +12,12 @@ public abstract class Entity extends GameObject {
     protected int collisionBoxOffsetX = 4;
     protected int collisionBoxOffsetY = 8;
 
-    public Entity(){
+    public Entity(int x, int y){
+        super(x, y);
+    }
+
+    public Entity(int x, int y, String imagePath) {
+        super(x, y, imagePath);
     }
 
     public void update(State state){

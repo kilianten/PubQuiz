@@ -5,27 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/NPC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/bar/bartender/Bartender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/bar/bartender/BartenderImages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/BeerPint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gameObjects/scenery/BarCounter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/standing.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/standing.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/standingLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/standingLeft.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/walkingDown01.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingDown01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/walkingDown02.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingDown02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/walkingLeft01.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingLeft01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/walkingLeft02.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingLeft02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/walkingRight01.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingRight01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/player/walkingRight02.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/player/walkingRight02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/standing.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player/standing.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/standingLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player/standingLeft.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/walkingDown01.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player/walkingDown01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/walkingDown02.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player/walkingDown02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/walkingLeft01.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player/walkingLeft01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/walkingLeft02.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player/walkingLeft02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/walkingRight01.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player/walkingRight01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/walkingRight02.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player/walkingRight02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/bar/bartender/Bartender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/bar/bartender/Bartender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/InteractiveObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/interactiveObjects/InteractiveObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UITextItemPickup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UITextItemPickup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693513399415</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add Bartender NPC">
+      <created>1693864444421</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693864444421</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -200,6 +198,7 @@
     <MESSAGE value="Added Pause by Escape Key" />
     <MESSAGE value="Added Pause text" />
     <MESSAGE value="Added functionality to pause menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added functionality to pause menu" />
+    <MESSAGE value="Add Bartender NPC" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Bartender NPC" />
   </component>
 </project>

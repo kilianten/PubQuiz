@@ -18,10 +18,13 @@ public class UITextItemPickup extends UIText {
     public void draw(Graphics2D g2, GameState state){
         InteractiveObject interactiveObject = state.getPlayer().getInteractiveObject();
         if(interactiveObject != null){
-            g2.setFont(arial);
-            g2.setColor(Color.WHITE);
-            Rectangle2D r = arial.getStringBounds(interactiveObject.getInteractingMessage(), g2.getFontRenderContext());
-            g2.drawString(interactiveObject.getInteractingMessage(), (int) (x - r.getWidth() / 2) + Game.TILE_SIZE / 2, y);
-        }
+            String message = interactiveObject.getInteractingMessage();
+            if(message != null){
+                g2.setFont(arial);
+                g2.setColor(Color.WHITE);
+                Rectangle2D r = arial.getStringBounds(message, g2.getFontRenderContext());
+                g2.drawString(message, (int) (x - r.getWidth() / 2) + Game.TILE_SIZE / 2, y);
+            }
+         }
     }
 }

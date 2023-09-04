@@ -28,7 +28,7 @@ public class Player extends Entity implements PlayerImages {
     private InteractiveObject interactiveObject;
 
     public Player(){
-        super();
+        super(100, 1000);
         setDefaultValues();
         this.collisionBox = new Rectangle(0, 0, 32, 32);
         adjustCollisionBox();
@@ -47,8 +47,6 @@ public class Player extends Entity implements PlayerImages {
 
     public void setDefaultValues(){
         speed = 4;
-        x = 100;
-        y = 1000;
         direction = "down";
         sprite = defaultSprite;
         interactiveObject = null;
@@ -62,7 +60,7 @@ public class Player extends Entity implements PlayerImages {
 
     private void handleInput(State state) {
         if(state.getKey().isPressed(KeyEvent.VK_E) && interactiveObject != null){
-            interactiveObject.interactWith(state);
+            interactiveObject.interactWith(state, this);
         }
     }
 

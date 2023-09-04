@@ -6,6 +6,7 @@ import gameObjects.graphics.Animation;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import game.state.State;
+import graphics.ImageLoader;
 
 public class GameObject {
 
@@ -16,6 +17,20 @@ public class GameObject {
     protected Rectangle collisionBox;
     protected boolean canCollide = false;
     protected String direction;
+
+    public GameObject(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
+    public GameObject(int x, int y, String imagePath){
+        this.x = x;
+        this.y = y;
+        this.sprite = ImageLoader.loadImage(imagePath);
+    }
+
+    public GameObject() {
+    }
 
     public void update(State state) {
         if(this.animation != null){
@@ -103,4 +118,5 @@ public class GameObject {
     public void setDefaultSprite() {
         setSprite(defaultSprite);
     }
+
 }
