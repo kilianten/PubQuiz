@@ -5,6 +5,8 @@ import gameObjects.graphics.Animation;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.List;
+
 import game.state.State;
 import graphics.ImageLoader;
 
@@ -17,16 +19,18 @@ public class GameObject {
     protected Rectangle collisionBox;
     protected boolean isWalkable = true;
     protected String direction;
+    protected boolean interactable = true;
 
     public GameObject(int x, int y){
-        this.x = x;
-        this.y = y;
+        this(x, y, null);
     }
 
     public GameObject(int x, int y, String imagePath){
         this.x = x;
         this.y = y;
-        this.sprite = ImageLoader.loadImage(imagePath);
+        if(imagePath != null){
+            this.sprite = ImageLoader.loadImage(imagePath);
+        }
     }
 
     public GameObject() {
@@ -57,17 +61,6 @@ public class GameObject {
 
     public int getY() {
         return y;
-    }
-
-    public int getWidth(){
-        if(sprite == null){
-            System.out.println("SPRITE IS NULL: " + this);
-        }
-        return sprite.getWidth() * Game.SCALE;
-    }
-
-    public int getHeight(){
-        return sprite.getHeight() * Game.SCALE;
     }
 
     public BufferedImage getSprite() {
@@ -121,5 +114,15 @@ public class GameObject {
 
     public boolean isWalkable() {
         return isWalkable;
+    }
+
+    public boolean isNear(GameObject gameObject, int range) {
+        Rectangle proximity = new Rectangle(
+                gameObject.x - (range / 2),
+                gameObject.y - (range / 2),
+                range,
+                range
+        );
+        return proximity.contains(x, y);
     }
 }

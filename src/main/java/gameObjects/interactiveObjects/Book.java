@@ -17,9 +17,7 @@ public class Book extends InteractiveObject {
             "/objects/book/greenBookOpening6.png"};
 
     public Book(String bookTitle){
-        super("book", "/objects/book/greenBook.png");
-        x = 0;
-        y = 0;
+        super( "/objects/book/greenBook.png", 0, 0);
         this.bookTitle = bookTitle;
     }
 

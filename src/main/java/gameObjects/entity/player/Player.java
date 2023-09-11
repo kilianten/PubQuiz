@@ -1,5 +1,6 @@
 package gameObjects.entity.player;
 
+import gameObjects.GameObject;
 import gameObjects.entity.Entity;
 import gameObjects.graphics.Animation;
 import gameObjects.interactiveObjects.InteractiveObject;
@@ -11,9 +12,9 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import game.state.State;
-import input.KeyHandler;
 
 public class Player extends Entity implements PlayerImages {
 
@@ -54,6 +55,13 @@ public class Player extends Entity implements PlayerImages {
 
     public void update(State state) {
         super.update(state);
+        if(isWalking(state)) {
+            handleMotion(state);
+            adjustCollisionBox();
+        } else {
+            sprite = getDefaultSprite();
+            animation = null;
+        }
         checkNearbyInteractiveObjects(state);
         handleInput(state);
     }
@@ -129,6 +137,13 @@ public class Player extends Entity implements PlayerImages {
     }
 
     public Optional<InteractiveObject> findNearestInteractiveObject(State state) {
+        return state.getInteractiveGameObjects().stream()
+                .filter(gameObject -> distanceTo(gameObject) < Game.TILE_SIZE * 1.5)
+                .filter(gameObject -> isFacing(gameObject))
+                .min(Comparator.comparingDouble(gameObject -> distanceTo(gameObject)));
+    }
+
+    public Optional<InteractiveObject> findNearestTalkingNPC(State state) {
         return state.getInteractiveGameObjects().stream()
                 .filter(gameObject -> distanceTo(gameObject) < Game.TILE_SIZE * 1.5)
                 .filter(gameObject -> isFacing(gameObject))

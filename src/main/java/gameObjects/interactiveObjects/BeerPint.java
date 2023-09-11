@@ -11,8 +11,8 @@ public class BeerPint extends InteractiveObject {
     private int sipsLeft = 4;
     private BufferedImage[] beerImages;
 
-    public BeerPint(String name) {
-        super(name,"/objects/beerPint/beer.png", 10, 100);
+    public BeerPint(int x, int y) {
+        super("/objects/beerPint/beer.png", x, y);
         String[] imagePaths = {"/objects/beerPint/beer04.png",
                 "/objects/beerPint/beer03.png",
                 "/objects/beerPint/beer02.png",
@@ -39,5 +39,10 @@ public class BeerPint extends InteractiveObject {
             sipsLeft--;
             setSprite(beerImages[sipsLeft]);
         }
+    }
+
+    public void refill(){
+        sipsLeft = 4;
+        setSprite(beerImages[sipsLeft]);
     }
 }
