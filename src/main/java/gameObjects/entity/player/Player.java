@@ -1,7 +1,7 @@
 package gameObjects.entity.player;
 
-import gameObjects.GameObject;
 import gameObjects.entity.Entity;
+import gameObjects.entity.npc.NPC;
 import gameObjects.graphics.Animation;
 import gameObjects.interactiveObjects.InteractiveObject;
 import graphics.ImageLoader;
@@ -12,7 +12,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 import game.state.State;
 
@@ -27,6 +26,7 @@ public class Player extends Entity implements PlayerImages {
     private BufferedImage standingUpSprite;
 
     private InteractiveObject interactiveObject;
+    private NPC nearbyNPC;
 
     public Player(){
         super(100, 1000);
@@ -62,22 +62,42 @@ public class Player extends Entity implements PlayerImages {
             sprite = getDefaultSprite();
             animation = null;
         }
+        checkNearbyNPC(state);
         checkNearbyInteractiveObjects(state);
+
         handleInput(state);
     }
 
-    private void handleInput(State state) {
-        if(state.getKey().isPressed(KeyEvent.VK_E) && interactiveObject != null){
-            interactiveObject.interactWith(state, this);
+    private boolean checkNearbyNPC(State state) {
+        Optional<NPC> nearNPC = findNearestTalkingNPC(state);
+        if(nearNPC.isPresent()){
+            nearbyNPC = nearNPC.get();
+            return true;
+        } else {
+            nearbyNPC = null;
+            return false;
         }
     }
 
-    private void checkNearbyInteractiveObjects(State state) {
+    private void handleInput(State state) {
+
+        if(state.getKey().isPressed(KeyEvent.VK_E)){
+            if(nearbyNPC != null){
+                nearbyNPC.talkTo();
+            } else if (interactiveObject != null){
+                interactiveObject.interactWith(state, this);
+            }
+        }
+    }
+
+    private boolean checkNearbyInteractiveObjects(State state) {
         Optional<InteractiveObject> nearObject = findNearestInteractiveObject(state);
         if(nearObject.isPresent()){
             interactiveObject = nearObject.get();
+            return true;
         } else {
             interactiveObject = null;
+            return false;
         }
     }
 
@@ -137,21 +157,26 @@ public class Player extends Entity implements PlayerImages {
     }
 
     public Optional<InteractiveObject> findNearestInteractiveObject(State state) {
-        return state.getInteractiveGameObjects().stream()
+        return state.getGameObjectsOfClass(InteractiveObject.class).stream()
                 .filter(gameObject -> distanceTo(gameObject) < Game.TILE_SIZE * 1.5)
                 .filter(gameObject -> isFacing(gameObject))
                 .min(Comparator.comparingDouble(gameObject -> distanceTo(gameObject)));
     }
 
-    public Optional<InteractiveObject> findNearestTalkingNPC(State state) {
-        return state.getInteractiveGameObjects().stream()
-                .filter(gameObject -> distanceTo(gameObject) < Game.TILE_SIZE * 1.5)
-                .filter(gameObject -> isFacing(gameObject))
+    public Optional<NPC> findNearestTalkingNPC(State state) {
+        return state.getGameObjectsOfClass(NPC.class).stream()
+                .filter(npc -> distanceTo(npc) < Game.TILE_SIZE * 2)
+                .filter(npc -> isFacing(npc))
+                .filter(NPC::wantsToTalk)
                 .min(Comparator.comparingDouble(gameObject -> distanceTo(gameObject)));
     }
 
     public InteractiveObject getInteractiveObject() {
         return interactiveObject;
+    }
+
+    public NPC getNearbyNPC() {
+        return nearbyNPC;
     }
 
 }

@@ -12,6 +12,8 @@ import sound.Sound;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class State {
 
@@ -37,14 +39,11 @@ public abstract class State {
         return gameObjects;
     }
 
-    public ArrayList<InteractiveObject> getInteractiveGameObjects() {
-        ArrayList<InteractiveObject> interactiveObjects = new ArrayList();
-        for(GameObject object: gameObjects){
-            if(object instanceof InteractiveObject){
-                interactiveObjects.add((InteractiveObject) object);
-            }
-        }
-        return interactiveObjects;
+    public <T extends GameObject> List<T> getGameObjectsOfClass(Class<T> clazz){
+        return getGameObjects().stream()
+                .filter(clazz::isInstance)
+                .map(gameObject -> (T) gameObject)
+                .collect(Collectors.toList());
     }
 
     public Camera getCamera() {
@@ -81,4 +80,6 @@ public abstract class State {
     public void unPause() {
         isPaused = false;
     }
+
+
 }

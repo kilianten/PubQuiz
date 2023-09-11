@@ -2,6 +2,7 @@ package ui;
 
 import game.Game;
 import game.state.GameState;
+import gameObjects.entity.npc.NPC;
 import gameObjects.interactiveObjects.InteractiveObject;
 
 import java.awt.*;
@@ -16,15 +17,24 @@ public class UITextItemPickup extends UIText {
     }
 
     public void draw(Graphics2D g2, GameState state){
-        InteractiveObject interactiveObject = state.getPlayer().getInteractiveObject();
-        if(interactiveObject != null){
-            String message = interactiveObject.getInteractingMessage();
+        NPC nearbyNPC = state.getPlayer().getNearbyNPC();
+        String message = null;
+        if(nearbyNPC != null){
+            message = "Talk to ".concat(nearbyNPC.getName());
+        } else {
+            InteractiveObject interactiveObject = state.getPlayer().getInteractiveObject();
+            if(interactiveObject != null) {
+                message = interactiveObject.getInteractingMessage();
+            }
+        }
+
+
             if(message != null){
                 g2.setFont(arial);
                 g2.setColor(Color.WHITE);
                 Rectangle2D r = arial.getStringBounds(message, g2.getFontRenderContext());
                 g2.drawString(message, (int) (x - r.getWidth() / 2) + Game.TILE_SIZE / 2, y);
             }
-         }
+
     }
 }

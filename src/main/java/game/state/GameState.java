@@ -11,7 +11,6 @@ import gameObjects.interactiveObjects.Book;
 import gameObjects.scenery.BarCounter;
 import input.KeyHandler;
 import ui.DialogueWindow;
-import ui.UIText;
 import ui.UITextItemPickup;
 
 import java.awt.*;

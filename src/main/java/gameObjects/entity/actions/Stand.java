@@ -22,7 +22,6 @@ public class Stand extends Action {
         startTime = System.currentTimeMillis();
         Random random = new Random();
         durationSeconds = 2 + random.nextInt(5);
-        System.out.println("new stand");
     }
 
     @Override
