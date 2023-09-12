@@ -18,4 +18,9 @@ public class Bartender extends NPC {
     public void update(State state) {
         actionManager.update(state, this);
     }
+
+    @Override
+    public String[] talkTo() {
+        return new String[]{"Hey, what can I get you?", "I haven't got all day... I have other customers... Probably...\nJust get out of here"};
+    }
 }

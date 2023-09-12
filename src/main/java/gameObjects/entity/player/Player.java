@@ -1,5 +1,6 @@
 package gameObjects.entity.player;
 
+import game.state.GameState;
 import gameObjects.entity.Entity;
 import gameObjects.entity.npc.NPC;
 import gameObjects.graphics.Animation;
@@ -80,10 +81,10 @@ public class Player extends Entity implements PlayerImages {
     }
 
     private void handleInput(State state) {
-
         if(state.getKey().isPressed(KeyEvent.VK_E)){
             if(nearbyNPC != null){
-                nearbyNPC.talkTo();
+                ((GameState) state).enterDialogue(nearbyNPC.talkTo());
+
             } else if (interactiveObject != null){
                 interactiveObject.interactWith(state, this);
             }

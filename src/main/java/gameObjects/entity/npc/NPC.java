@@ -2,7 +2,7 @@ package gameObjects.entity.npc;
 
 import gameObjects.entity.Entity;
 
-public class NPC extends Entity {
+public abstract class NPC extends Entity {
 
     protected boolean wantsToTalk;
     protected String name;
@@ -12,9 +12,7 @@ public class NPC extends Entity {
         this.name = name;
     }
 
-    public void talkTo(){
-        System.out.println("Hey");
-    }
+    public abstract String[] talkTo();
 
     public void interactWith(){
 

@@ -20,6 +20,7 @@ public class GameState extends State {
     private Player player = new Player();
     private UITextItemPickup ui = new UITextItemPickup();
     private DialogueWindow dialogueWindow;
+    private String mode;
 
     public GameState(KeyHandler key){
         camera = new Camera(player);
@@ -30,13 +31,21 @@ public class GameState extends State {
         gameObjects.add(new BeerPint(5 * Game.TILE_SIZE, 3 * Game.TILE_SIZE - 15));
         this.key = key;
         gameObjects.add(new Bartender());
-        dialogueWindow = new DialogueWindow();
     }
 
     public void update() {
         super.update();
-        player.update(this);
-        camera.update();
+        if(mode != "dialogue"){
+            for(GameObject gameObject: gameObjects){
+                gameObject.update(this);
+            }
+            player.update(this);
+            camera.update();
+        } else {
+            if(!dialogueWindow.hasMoreDialogue(key)){
+                exitDialogue();
+            };
+        }
     }
 
     @Override
@@ -46,8 +55,11 @@ public class GameState extends State {
             renderer.renderObject(this, g2, gameObject);
         }
         renderer.renderObject(this, g2, player);
-        ui.draw(g2, this);
-        dialogueWindow.draw(g2);
+        if(mode == "dialogue"){
+            dialogueWindow.draw(g2);
+        } else {
+            ui.draw(g2, this);
+        }
     }
 
     public Player getPlayer() {
@@ -55,4 +67,17 @@ public class GameState extends State {
     }
 
 
+    public void setMode(String dialogue) {
+        this.mode = dialogue;
+    }
+
+    public void enterDialogue(String[] speechText) {
+        setMode("dialogue");
+        dialogueWindow = new DialogueWindow(speechText);
+    }
+
+    public void exitDialogue() {
+        setMode(null);
+        dialogueWindow = null;
+    }
 }

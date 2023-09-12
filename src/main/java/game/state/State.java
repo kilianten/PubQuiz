@@ -27,9 +27,6 @@ public abstract class State {
 
     public void update() {
         checkPause();
-        for(GameObject gameObject: gameObjects){
-            gameObject.update(this);
-        }
     }
 
     public abstract void draw(Graphics2D g2, Renderer renderer);
