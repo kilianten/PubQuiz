@@ -2,44 +2,53 @@ package game.state;
 
 import display.Camera;
 import display.Renderer;
+import game.CollisionManager;
 import game.Game;
 import gameObjects.GameObject;
-import gameObjects.entity.npc.bar.bartender.Bartender;
 import gameObjects.entity.player.Player;
-import gameObjects.interactiveObjects.BeerPint;
-import gameObjects.interactiveObjects.Book;
-import gameObjects.scenery.BarCounter;
 import input.KeyHandler;
+import level.Level;
+import level.levels.BarLevel;
 import ui.DialogueWindow;
 import ui.UITextItemPickup;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameState extends State {
 
-    private Player player = new Player();
+    private Player player;
     private UITextItemPickup ui = new UITextItemPickup();
     private DialogueWindow dialogueWindow;
     private String mode;
+    private Level level;
+    private CollisionManager collisionManager;
 
     public GameState(KeyHandler key){
-        camera = new Camera(player);
-        gameObjects.add(new Book("Principia"));
-        gameObjects.add(new BarCounter(3, 3));
-        gameObjects.add(new BarCounter(4, 3));
-        gameObjects.add(new BarCounter(5, 3));
-        gameObjects.add(new BeerPint(5 * Game.TILE_SIZE, 3 * Game.TILE_SIZE - 15));
         this.key = key;
-        gameObjects.add(new Bartender());
+
+        player = new Player();
+        camera = new Camera(player);
+        level = new BarLevel(player);
+        checkIfObjectsMissingSpriteHeight();
+        collisionManager = new CollisionManager(this);
+    }
+    public CollisionManager getCollisionManager(){
+        return collisionManager;
     }
 
-    public void update() {
-        super.update();
+    private void sortGameObjects() {
+        getGameObjects().sort(Comparator.comparing(GameObject::getRenderLevel).thenComparing(gameObject -> gameObject.getYRender()));
+    }
+
+    public void update(Game game) {
+        super.update(game);
+        sortGameObjects();
         if(mode != "dialogue"){
-            for(GameObject gameObject: gameObjects){
-                gameObject.update(this);
-            }
-            player.update(this);
+            level.update(this);
             camera.update();
         } else {
             if(!dialogueWindow.hasMoreDialogue(key)){
@@ -51,10 +60,7 @@ public class GameState extends State {
     @Override
     public void draw(Graphics2D g2, Renderer renderer) {
         renderer.renderMap(this, g2);
-        for(GameObject gameObject: gameObjects){
-            renderer.renderObject(this, g2, gameObject);
-        }
-        renderer.renderObject(this, g2, player);
+        level.draw(this, g2, renderer);
         if(mode == "dialogue"){
             dialogueWindow.draw(g2);
         } else {
@@ -80,4 +86,23 @@ public class GameState extends State {
         setMode(null);
         dialogueWindow = null;
     }
+
+    public ArrayList<GameObject> getGameObjects() {
+        return level.getGameObjects();
+    }
+
+    public <T extends GameObject> List<T> getGameObjectsOfClass(Class<T> clazz){
+        return getGameObjects().stream()
+                .filter(clazz::isInstance)
+                .map(gameObject -> (T) gameObject)
+                .collect(Collectors.toList());
+    }
+
+    public void checkIfObjectsMissingSpriteHeight(){
+        for(GameObject gameObject: level.getGameObjects()){
+            gameObject.checkIfSpriteHeightSet();
+        }
+    }
+
+
 }

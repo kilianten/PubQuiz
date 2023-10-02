@@ -3,7 +3,7 @@ package display;
 import game.Game;
 import gameObjects.GameObject;
 import gameObjects.entity.player.Player;
-import map.Tile;
+import level.map.Tile;
 import game.state.State;
 
 import java.awt.*;

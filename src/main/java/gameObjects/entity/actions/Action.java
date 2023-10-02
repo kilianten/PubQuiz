@@ -1,6 +1,6 @@
 package gameObjects.entity.actions;
 
-import game.state.State;
+import game.state.GameState;
 import gameObjects.entity.Entity;
 
 public abstract class Action {
@@ -19,9 +19,9 @@ public abstract class Action {
         this.furtherAction = furtherAction;
     }
 
-    public abstract void update(State state, Entity entity);
+    public abstract void update(GameState state, Entity entity);
 
-    public abstract boolean shouldTransition(State state, Entity currentCharacter);
+    public abstract boolean shouldTransition(GameState state, Entity currentCharacter);
 
     public String getNextState() {
         return nextAction;

@@ -1,16 +1,17 @@
 package gameObjects;
 
 import game.Game;
+import game.state.GameState;
+import gameObjects.entity.player.Player;
 import gameObjects.graphics.Animation;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.List;
 
-import game.state.State;
+import gameObjects.interactiveObjects.Book;
 import graphics.ImageLoader;
 
-public class GameObject {
+public abstract class GameObject {
 
     protected int x, y;
     protected BufferedImage sprite;
@@ -19,7 +20,9 @@ public class GameObject {
     protected Rectangle collisionBox;
     protected boolean isWalkable = true;
     protected String direction;
-    protected boolean interactable = true;
+    protected int renderLevel = 5;
+
+    protected int spriteHeight = -1;
 
     public GameObject(int x, int y){
         this(x, y, null);
@@ -30,13 +33,27 @@ public class GameObject {
         this.y = y;
         if(imagePath != null){
             this.sprite = ImageLoader.loadImage(imagePath);
+            this.defaultSprite = sprite;
         }
+        setSpriteHeight();
+    }
+
+    private int calculateLastPixelOfImage() {
+        int maxHeight = 0;
+        for(int i = 0; i < sprite.getWidth(); i++){
+            for(int j = 0; j < sprite.getHeight(); j++) {
+                if(sprite.getRGB(i, j) != 0 && j > maxHeight){
+                    maxHeight = j;
+                }
+            }
+        }
+        return maxHeight + 1;
     }
 
     public GameObject() {
     }
 
-    public void update(State state) {
+    public void update(GameState state) {
         if(this.animation != null){
             animation.update(this);
         }
@@ -125,4 +142,20 @@ public class GameObject {
         );
         return proximity.contains(x, y);
     }
+
+    public int getRenderLevel() {
+        return renderLevel;
+    }
+
+    public int getYRender() {
+        return y + spriteHeight;
+    }
+
+    public void checkIfSpriteHeightSet() {
+        if(spriteHeight == -1){
+            System.out.println("IMAGE HEIGHT NOT SET FOR " + this + "set to: " + calculateLastPixelOfImage());
+        }
+    }
+
+    protected abstract void setSpriteHeight();
 }

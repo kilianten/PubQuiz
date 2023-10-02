@@ -30,7 +30,7 @@ public class Player extends Entity implements PlayerImages {
     private NPC nearbyNPC;
 
     public Player(){
-        super(100, 1000);
+        super(0, 0, "/player/standing.png");
         setDefaultValues();
         this.collisionBox = new Rectangle(0, 0, 32, 32);
         adjustCollisionBox();
@@ -42,7 +42,6 @@ public class Player extends Entity implements PlayerImages {
         walkingRightImages = ImageLoader.loadImages(WALKING_RIGHT_IMAGES);
         walkingLeftImages = ImageLoader.loadImages(WALKING_LEFT_IMAGES);
         walkingUpImages = ImageLoader.loadImages(WALKING_UP_IMAGES);
-        defaultSprite = ImageLoader.loadImage("/player/standing.png");
         standingLeftSprite = ImageLoader.loadImage("/player/standingLeft.png");
         standingUpSprite = ImageLoader.loadImage("/player/standingUp.png");
     }
@@ -54,7 +53,7 @@ public class Player extends Entity implements PlayerImages {
         interactiveObject = null;
     }
 
-    public void update(State state) {
+    public void update(GameState state) {
         super.update(state);
         if(isWalking(state)) {
             handleMotion(state);
@@ -69,7 +68,7 @@ public class Player extends Entity implements PlayerImages {
         handleInput(state);
     }
 
-    private boolean checkNearbyNPC(State state) {
+    private boolean checkNearbyNPC(GameState state) {
         Optional<NPC> nearNPC = findNearestTalkingNPC(state);
         if(nearNPC.isPresent()){
             nearbyNPC = nearNPC.get();
@@ -91,7 +90,7 @@ public class Player extends Entity implements PlayerImages {
         }
     }
 
-    private boolean checkNearbyInteractiveObjects(State state) {
+    private boolean checkNearbyInteractiveObjects(GameState state) {
         Optional<InteractiveObject> nearObject = findNearestInteractiveObject(state);
         if(nearObject.isPresent()){
             interactiveObject = nearObject.get();
@@ -113,7 +112,7 @@ public class Player extends Entity implements PlayerImages {
         }
     }
 
-    public void handleMotion(State state){
+    public void handleMotion(GameState state){
         int newX = 0, newY = 0;
 
         if(state.getKey().isCurrentlyPressed(KeyEvent.VK_S)){
@@ -157,14 +156,14 @@ public class Player extends Entity implements PlayerImages {
                 state.getKey().isCurrentlyPressed(KeyEvent.VK_D);
     }
 
-    public Optional<InteractiveObject> findNearestInteractiveObject(State state) {
+    public Optional<InteractiveObject> findNearestInteractiveObject(GameState state) {
         return state.getGameObjectsOfClass(InteractiveObject.class).stream()
                 .filter(gameObject -> distanceTo(gameObject) < Game.TILE_SIZE * 1.5)
                 .filter(gameObject -> isFacing(gameObject))
                 .min(Comparator.comparingDouble(gameObject -> distanceTo(gameObject)));
     }
 
-    public Optional<NPC> findNearestTalkingNPC(State state) {
+    public Optional<NPC> findNearestTalkingNPC(GameState state) {
         return state.getGameObjectsOfClass(NPC.class).stream()
                 .filter(npc -> distanceTo(npc) < Game.TILE_SIZE * 2)
                 .filter(npc -> isFacing(npc))
@@ -180,4 +179,7 @@ public class Player extends Entity implements PlayerImages {
         return nearbyNPC;
     }
 
+    protected void setSpriteHeight(){
+        this.spriteHeight = 64;
+    }
 }

@@ -1,14 +1,15 @@
 package game;
 
-import map.Tile;
+import game.state.GameState;
+import level.map.Tile;
 import game.state.State;
 import java.awt.*;
 
 public class CollisionManager {
 
-    private State state;
+    private GameState state;
 
-    public CollisionManager(State state){
+    public CollisionManager(GameState state){
         this.state = state;
     }
 

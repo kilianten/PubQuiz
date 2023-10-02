@@ -3,45 +3,27 @@ package game.state;
 import display.Camera;
 import display.Renderer;
 import game.CollisionManager;
+import game.Game;
 import gameObjects.GameObject;
-import gameObjects.interactiveObjects.InteractiveObject;
 import input.KeyHandler;
-import map.GameMap;
+import level.map.GameMap;
 import sound.Sound;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class State {
 
     protected GameMap gameMap = new GameMap();
     protected Camera camera;
-    protected ArrayList<GameObject> gameObjects = new ArrayList<>();
-    private CollisionManager collisionManager = new CollisionManager(this);
     protected KeyHandler key;
     protected Sound sound = new Sound();
-    protected boolean isPaused;
 
-    public void update() {
-        checkPause();
+    public void update(Game game) {
+        checkPause(game);
     }
 
     public abstract void draw(Graphics2D g2, Renderer renderer);
-
-
-    public ArrayList<GameObject> getGameObjects() {
-        return gameObjects;
-    }
-
-    public <T extends GameObject> List<T> getGameObjectsOfClass(Class<T> clazz){
-        return getGameObjects().stream()
-                .filter(clazz::isInstance)
-                .map(gameObject -> (T) gameObject)
-                .collect(Collectors.toList());
-    }
 
     public Camera getCamera() {
         return camera;
@@ -49,10 +31,6 @@ public abstract class State {
 
     public GameMap getGameMap() {
         return gameMap;
-    }
-
-    public CollisionManager getCollisionManager(){
-        return collisionManager;
     }
 
     public KeyHandler getKey() {
@@ -64,19 +42,10 @@ public abstract class State {
         sound.play();
     }
 
-    public boolean isPaused() {
-        return isPaused;
-    }
-
-    public void checkPause() {
+    public void checkPause(Game game) {
         if(key.isPressed(KeyEvent.VK_ESCAPE)){
-            isPaused = true;
+            game.setState("pauseState");
         }
     }
-
-    public void unPause() {
-        isPaused = false;
-    }
-
 
 }

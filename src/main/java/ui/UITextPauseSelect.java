@@ -15,10 +15,10 @@ public class UITextPauseSelect extends UIText {
     }
 
     public void draw(Graphics2D g2, State state){
-        g2.setFont(arial);
+        g2.setFont(palette);
         g2.setColor(Color.WHITE);
         double xOffset = 0;
-        Rectangle2D r = arial.getStringBounds(text, g2.getFontRenderContext());
+        Rectangle2D r = palette.getStringBounds(text, g2.getFontRenderContext());
 
         if(selected){
             g2.fillRect(x - borderSize,

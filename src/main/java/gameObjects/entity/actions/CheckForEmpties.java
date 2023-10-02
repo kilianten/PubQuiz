@@ -1,5 +1,6 @@
 package gameObjects.entity.actions;
 
+import game.state.GameState;
 import game.state.State;
 import gameObjects.GameObject;
 import gameObjects.entity.Entity;
@@ -17,7 +18,7 @@ public class CheckForEmpties extends Action {
     }
 
     @Override
-    public void update(State state, Entity entity) {
+    public void update(GameState state, Entity entity) {
         List<GameObject> pints = state.getGameObjects().stream()
                 .filter(gameObject -> gameObject instanceof BeerPint)
                 .filter(gameObject -> gameObject.isNear(entity, 250)).collect(Collectors.toList());
@@ -25,7 +26,7 @@ public class CheckForEmpties extends Action {
     }
 
     @Override
-    public boolean shouldTransition(State state, Entity currentCharacter) {
+    public boolean shouldTransition(GameState state, Entity currentCharacter) {
         return true;
     }
 }

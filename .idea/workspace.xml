@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/state/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/state/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/state/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/NPC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/bar/bartender/Bartender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/npc/bar/bartender/Bartender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gameObjects/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/DialogueWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/DialogueWindow.java" afterDir="false" />
-    </list>
+    <list default="true" id="3b32131d-6bd1-497a-baa4-104fe73898a5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,10 +50,11 @@
       <recent name="KeyHandler" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kilian\workspace\PubQuiz\src\main\java" />
+      <recent name="C:\Users\Kilian\workspace\PubQuiz\src\main\resources\fonts" />
       <recent name="C:\Users\Kilian\workspace\PubQuiz\src\main\resources" />
       <recent name="C:\Users\Kilian\workspace\PubQuiz\src\main\resources\Player" />
       <recent name="C:\Users\Kilian\workspace\PubQuiz\src\main" />
-      <recent name="C:\Users\Kilian\workspace\PubQuiz\src" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -212,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694470404109</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added dialogue for Bartender">
+      <created>1694559174710</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1694559174710</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -227,6 +227,7 @@
     <MESSAGE value="Added abstract Action Class" />
     <MESSAGE value="Added AI, Bartender fills empty pints glasses" />
     <MESSAGE value="Can talk with NPCs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Can talk with NPCs" />
+    <MESSAGE value="Added dialogue for Bartender" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added dialogue for Bartender" />
   </component>
 </project>

@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
-public class PauseState extends State {
+public class TitleState extends State {
 
     private UIText pausedText;
     private int selectedIndex = 0;
@@ -19,10 +19,10 @@ public class PauseState extends State {
     private BufferedImage[] beerImages;
     private String[] beerImagesPath = {"/objects/beerPint/beer.png", "/objects/beerPint/beer01.png", "/objects/beerPint/beer02.png", "/objects/beerPint/beer03.png", "/objects/beerPint/beer04.png"};
 
-    public PauseState(KeyHandler key){
-       this.key = key;
-        pausedText = new UIText("PAUSED", 50, .2, .3, false);
-        selectTexts[0] = new UITextPauseSelect("Resume", 35, .3, .4, false);
+    public TitleState(KeyHandler key){
+        this.key = key;
+        pausedText = new UIText("Pub Quiz", 50, .2, .3, false);
+        selectTexts[0] = new UITextPauseSelect("New Game", 35, .3, .4, false);
         selectTexts[0].select();
         selectTexts[1] = new UITextPauseSelect("Options", 35, .35, .5, false);
         selectTexts[2] = new UITextPauseSelect("Exit", 35, .3, .6, false);
@@ -46,8 +46,6 @@ public class PauseState extends State {
             selectTexts[selectedIndex].select();
         } else if(getKey().isPressed(KeyEvent.VK_ENTER)){
             handleEnter(game);
-        } else if(getKey().isPressed(KeyEvent.VK_ESCAPE)){
-            game.setState("gameState");
         }
     }
 
@@ -60,7 +58,7 @@ public class PauseState extends State {
                 game.setState("gameState");
                 break;
             case 2:
-                game.setState("menuState");
+                System.exit(1);
         }
     }
 

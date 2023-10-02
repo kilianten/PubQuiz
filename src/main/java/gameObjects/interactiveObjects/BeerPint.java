@@ -45,4 +45,8 @@ public class BeerPint extends InteractiveObject {
         sipsLeft = 4;
         setSprite(beerImages[sipsLeft]);
     }
+
+    protected void setSpriteHeight(){
+        this.spriteHeight = 44;
+    }
 }

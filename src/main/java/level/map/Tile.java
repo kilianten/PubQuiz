@@ -1,4 +1,4 @@
-package map;
+package level.map;
 
 import game.Game;
 

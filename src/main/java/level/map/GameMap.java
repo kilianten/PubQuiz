@@ -1,7 +1,6 @@
-package map;
+package level.map;
 
 import game.Game;
-import graphics.ImageLoader;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

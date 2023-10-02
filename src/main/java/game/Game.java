@@ -3,9 +3,9 @@ package game;
 import display.Renderer;
 import game.state.GameState;
 import game.state.PauseState;
+import game.state.TitleState;
 import input.KeyHandler;
 
-import sound.Sound;
 import game.state.State;
 
 import javax.swing.*;
@@ -37,7 +37,7 @@ public class Game extends JPanel implements Runnable {
         this.addKeyListener(key);
         this.setFocusable(true);
         this.gameState = new GameState(key);
-        this.state = gameState;
+        this.state = new TitleState(key);
     }
 
     public void startGameThread() {
@@ -46,15 +46,7 @@ public class Game extends JPanel implements Runnable {
     }
 
     public void update() {
-        if(state.isPaused()){
-            state.unPause();
-            if(state instanceof GameState){
-                this.state = new PauseState(key);
-            } else {
-                this.state = gameState;
-            }
-        }
-        state.update();
+        state.update(this);
     }
 
     public void paintComponent(Graphics g) {
@@ -94,4 +86,19 @@ public class Game extends JPanel implements Runnable {
         return TILE_SIZE;
     }
 
+    public void setState(String state) {
+        switch(state){
+            case "gameState":
+                this.state = gameState;
+                break;
+            case "menuState":
+                this.state = new TitleState(key);
+                break;
+            case "newGame":
+                this.gameState = new GameState(key);
+                this.state = gameState;
+            case "pauseState":
+                this.state = new PauseState(key);
+        }
+    }
 }

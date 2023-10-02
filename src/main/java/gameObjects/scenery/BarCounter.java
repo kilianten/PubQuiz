@@ -12,5 +12,10 @@ public class BarCounter extends GameObject {
         int yCollisionOffset = 20;
         collisionBox = new Rectangle(this.x, this.y + yCollisionOffset, Game.TILE_SIZE, Game.TILE_SIZE - yCollisionOffset);
         isWalkable = false;
+        renderLevel = 4;
+    }
+
+    protected void setSpriteHeight(){
+        this.spriteHeight = 64;
     }
 }

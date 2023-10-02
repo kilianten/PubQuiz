@@ -1,5 +1,6 @@
 package gameObjects.entity.actions;
 
+import game.state.GameState;
 import game.state.State;
 import gameObjects.entity.Entity;
 
@@ -25,12 +26,12 @@ public class Stand extends Action {
     }
 
     @Override
-    public void update(State state, Entity entity) {
+    public void update(GameState state, Entity entity) {
 
     }
 
     @Override
-    public boolean shouldTransition(State state, Entity currentCharacter) {
+    public boolean shouldTransition(GameState state, Entity currentCharacter) {
         return (System.currentTimeMillis() - startTime) / 1000 >= durationSeconds;
     }
 

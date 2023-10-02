@@ -1,5 +1,6 @@
 package gameObjects.entity.actions;
 
+import game.state.GameState;
 import game.state.State;
 import gameObjects.entity.Entity;
 import gameObjects.entity.npc.bar.bartender.Bartender;
@@ -8,7 +9,7 @@ public class ActionManager {
 
     private Action currentAction;
 
-    public void update(State state, Entity currentCharacter){
+    public void update(GameState state, Entity currentCharacter){
         if(currentAction != null){
             currentAction.update(state, currentCharacter);
             if(currentAction.shouldTransition(state, currentCharacter)){

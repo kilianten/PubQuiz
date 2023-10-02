@@ -1,6 +1,7 @@
 package gameObjects.entity.npc.bar.bartender;
 
 import game.Game;
+import game.state.GameState;
 import game.state.State;
 import gameObjects.entity.actions.Stand;
 import gameObjects.entity.npc.NPC;
@@ -15,12 +16,16 @@ public class Bartender extends NPC {
     }
 
     @Override
-    public void update(State state) {
+    public void update(GameState state) {
         actionManager.update(state, this);
     }
 
     @Override
     public String[] talkTo() {
         return new String[]{"Hey, what can I get you?", "I haven't got all day... I have other customers... Probably...\nJust get out of here"};
+    }
+
+    protected void setSpriteHeight(){
+        this.spriteHeight = 64;
     }
 }

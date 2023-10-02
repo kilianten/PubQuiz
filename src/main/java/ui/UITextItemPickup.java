@@ -7,11 +7,22 @@ import gameObjects.interactiveObjects.InteractiveObject;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class UITextItemPickup extends UIText {
 
     public UITextItemPickup() {
-        arial = new Font("Arial", Font.PLAIN, 20);
+        InputStream inputStream = getClass().getResourceAsStream("/fonts/Palette-regular.otf");
+
+        try {
+            palette = Font.createFont(Font.TRUETYPE_FONT, inputStream);
+            palette = palette.deriveFont(Font.PLAIN, 32F);
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         x = (Game.SCREEN_WIDTH / 2);
         y = (Game.SCREEN_HEIGHT / 2) - Game.TILE_SIZE / 2;
     }
@@ -30,9 +41,9 @@ public class UITextItemPickup extends UIText {
 
 
             if(message != null){
-                g2.setFont(arial);
+                g2.setFont(palette);
                 g2.setColor(Color.WHITE);
-                Rectangle2D r = arial.getStringBounds(message, g2.getFontRenderContext());
+                Rectangle2D r = palette.getStringBounds(message, g2.getFontRenderContext());
                 g2.drawString(message, (int) (x - r.getWidth() / 2) + Game.TILE_SIZE / 2, y);
             }
 

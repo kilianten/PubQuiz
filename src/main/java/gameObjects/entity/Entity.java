@@ -1,7 +1,7 @@
 package gameObjects.entity;
 
 import game.Game;
-import game.state.State;
+import game.state.GameState;
 import gameObjects.GameObject;
 import gameObjects.entity.actions.ActionManager;
 
@@ -14,17 +14,12 @@ public abstract class Entity extends GameObject {
     protected int collisionBoxOffsetY = 8;
     protected ActionManager actionManager;
 
-    public Entity(int x, int y){
-        super(x, y);
-        actionManager = new ActionManager();
-    }
-
     public Entity(int x, int y, String imagePath) {
         super(x, y, imagePath);
         actionManager = new ActionManager();
     }
 
-    public void update(State state){
+    public void update(GameState state){
         super.update(state);
         actionManager.update(state, this);
     }

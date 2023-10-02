@@ -32,5 +32,7 @@ public class Book extends InteractiveObject {
         this.animation = new Animation(ImageLoader.loadImages(OPENING_BOOK_IMAGES));
     }
 
-
+    protected void setSpriteHeight(){
+        this.spriteHeight = 48;
+    }
 }
